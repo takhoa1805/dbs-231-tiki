@@ -7,7 +7,7 @@ const expressApp = require('./app');
 //START SERVER
 const startServer = async () => {
   const app = express();
-  await database.connect();
+  await database();
   await expressApp(app);
   app.listen(3000);
 };
