@@ -241,6 +241,7 @@ CREATE TABLE DanhGiaSanPham (
 	SoSao INT not null CHECK (SoSao > 0 AND SoSao <= 5),
 	MaSP CHAR(8) not null,
 	TrangThaiChinhSua INT CHECK (TrangThaiChinhSua IN (0,1)),
+	NgayDanhGia DATE not null,
 	MaNguoiMua CHAR(6) not null,
 	MaDonHang INT not null,
 	PRIMARY KEY (MaDanhGia),
