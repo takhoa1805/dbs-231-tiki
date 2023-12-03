@@ -47,7 +47,7 @@ CREATE TABLE DanhSachSPLienQuan (
 CREATE TABLE SanPham (
 	MaSP CHAR(8) not null,
 	GiaTien DECIMAL(10,2) not null CHECK (GiaTien > 1000),
-	MoTa NVARCHAR(255),
+	MoTa NVARCHAR(MAX),
 	TenSP NVARCHAR(255) not null,
 	XuatXu NVARCHAR(30),
 	SoLuongConLai INT CHECK (SoLuongConLai >= 0),
@@ -56,6 +56,7 @@ CREATE TABLE SanPham (
 	DanhSachLienQuan INT,
 	SPMau CHAR(8),
 	MaNguoiBan CHAR(6) not null,
+	SoSaoTrungBinh DECIMAL(1,1),
 	PRIMARY KEY (MaSP),
 	FOREIGN KEY (SPMau) REFERENCES SanPham(MaSP),
 	FOREIGN KEY (MaThuongHieu) REFERENCES ThuongHieu(MaThuongHieu),
@@ -164,8 +165,8 @@ CREATE TABLE AnhMinhHoaSP (
 
 CREATE TABLE KhoHang (
 	MaKhoHang INT not null,
-	TenKhoHang NVARCHAR(255) not null,
-	DiaChi VARCHAR(255) not null,
+	TenKhoHang VARCHAR(255) not null,
+	DiaChi NVARCHAR(255) not null,
 	UNIQUE(TenKhoHang),
 	PRIMARY KEY (MaKhoHang),
 )
@@ -186,7 +187,6 @@ CREATE TABLE KhuyenMai (
 	TienGiamToiDa DECIMAL(10,2),
 	SoLuongBanDau INT not null CHECK(SoLuongBanDau > 0),
 	SoLuongConLai INT CHECK(SoLuongConLai >= 0),
-	TenKhuyenMai NVARCHAR(255) not null,
 	ThoiGianCoHieuLuc DATE not null,
 	ThoiGianHetHieuLuc DATE not null,
 	LoaiVoucher VARCHAR(50) not null,
@@ -226,7 +226,7 @@ CREATE TABLE DonHang (
 	MaNguoiMua CHAR(6) not null,
 	MaCoupon VARCHAR(50) ,
 	MaVoucherVanChuyen VARCHAR(50),
-	GiaTien DECIMAL(10,2) not null CHECK(GiaTien >= 0),
+	GiaTien DECIMAL(10,2) CHECK(GiaTien >= 0),
 	PRIMARY KEY (MaDonHang),
 	FOREIGN KEY (MaNguoiMua) REFERENCES NguoiMua(MaTK),
 	FOREIGN KEY (MaCoupon) REFERENCES Coupon(MaKhuyenMai),
@@ -241,7 +241,6 @@ CREATE TABLE DanhGiaSanPham (
 	SoSao INT not null CHECK (SoSao > 0 AND SoSao <= 5),
 	MaSP CHAR(8) not null,
 	TrangThaiChinhSua INT CHECK (TrangThaiChinhSua IN (0,1)),
-	NgayDanhGia DATE not null,
 	MaNguoiMua CHAR(6) not null,
 	MaDonHang INT not null,
 	PRIMARY KEY (MaDanhGia),
@@ -253,9 +252,8 @@ CREATE TABLE DanhGiaSanPham (
 
 CREATE TABLE HinhAnhVideoDanhGia (
 	MaDanhGia INT not null,
-	HinhAnh VARCHAR(255),
-	Video VARCHAR(255),
-	PRIMARY KEY (MaDanhGia, HinhAnh, Video),
+	HinhAnhVideo VARCHAR(255),
+	PRIMARY KEY (MaDanhGia, HinhAnhVideo),
 	FOREIGN KEY (MaDanhGia) REFERENCES DanhGiaSanPham(MaDanhGia),
 )
 
@@ -265,7 +263,7 @@ CREATE TABLE DanhSachSPThuocDonHang (
 	MaSP CHAR(8) not null,
 	MaDonHang INT not null,
 	SoLuong INT not null CHECK (SoLuong > 0),
-	GiaTien DECIMAL(10,2) not null,
+	GiaTien DECIMAL(10,2),
 	PRIMARY KEY (MaSP, MaDonHang),
 	FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP),
 	FOREIGN KEY (MaDonHang) REFERENCES DonHang(MaDonHang),
@@ -276,7 +274,7 @@ CREATE TABLE DanhSachSPThuocGioHang (
 	MaSP CHAR(8) not null,
 	MaNguoiMua CHAR(6) not null,
 	SoLuong INT not null CHECK (SoLuong > 0),
-	GiaTien DECIMAL(10,2) not null,
+	GiaTien DECIMAL(10,2),
 	PRIMARY KEY (MaSP, MaNguoiMua),
 	FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP),
 	FOREIGN KEY (MaNguoiMua) REFERENCES GioHang(MaNguoiMua),
