@@ -84,9 +84,3 @@ BEGIN
 	WHERE MaDanhGia = @MaDanhGia
 
 END
-
-
-----
-UPDATE DanhGiaSanPham
-SET SoSao = 2
-WHERE MaDanhGia = 9
