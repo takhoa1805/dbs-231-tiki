@@ -80,7 +80,8 @@ BEGIN
 	WHERE MaSP = @MaSP
 
 	UPDATE DanhGiaSanPham
-	SET TrangThaiChinhSua = 1
+	SET TrangThaiChinhSua = 1, NgayDanhGia = CAST(GETDATE() AS DATE)
 	WHERE MaDanhGia = @MaDanhGia
 
 END
+

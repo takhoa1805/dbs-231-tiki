@@ -56,7 +56,7 @@ CREATE TABLE SanPham (
 	DanhSachLienQuan INT,
 	SPMau CHAR(8),
 	MaNguoiBan CHAR(6) not null,
-	SoSaoTrungBinh DECIMAL(1,1),
+	SoSaoTrungBinh DECIMAL(2,1),
 	PRIMARY KEY (MaSP),
 	FOREIGN KEY (SPMau) REFERENCES SanPham(MaSP),
 	FOREIGN KEY (MaThuongHieu) REFERENCES ThuongHieu(MaThuongHieu),
@@ -243,6 +243,7 @@ CREATE TABLE DanhGiaSanPham (
 	TrangThaiChinhSua INT CHECK (TrangThaiChinhSua IN (0,1)),
 	MaNguoiMua CHAR(6) not null,
 	MaDonHang INT not null,
+	NgayDanhGia DATE,
 	PRIMARY KEY (MaDanhGia),
 	FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP),
 	FOREIGN KEY (MaNguoiMua) REFERENCES NguoiMua(MaTK),
@@ -277,8 +278,7 @@ CREATE TABLE DanhSachSPThuocGioHang (
 	GiaTien DECIMAL(10,2),
 	PRIMARY KEY (MaSP, MaNguoiMua),
 	FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP),
-	FOREIGN KEY (MaNguoiMua) REFERENCES GioHang(MaNguoiMua),
-
+	FOREIGN KEY (MaNguoiMua) REFERENCES GioHang(MaNguoiMua),	
 )
 
 CREATE TABLE DanhMucSP (
@@ -315,8 +315,9 @@ CREATE TABLE VoucherCuaShopTrongDonHang (
 )
 
 
-----Create TRIGGER-----------------------------------------------------------------------------------
+--Create TRIGGER
 
+----Trigger kiểm tra số lượng hình ảnh minh hoạ của sản phẩm
 GO
 CREATE TRIGGER trCheckImageCount
 ON AnhMinhHoaSP
@@ -340,6 +341,8 @@ BEGIN
     END
 END;
 
+
+----Trigger kiểm tra số lượng còn lại
 GO
 CREATE TRIGGER trCheckQuantityLimitCart
 ON DanhSachSPThuocGioHang
@@ -363,7 +366,7 @@ END;
 
 GO
 CREATE TRIGGER trCheckQuantityLimitOrder
-ON DanhSachSPThuocGioHang
+ON DanhSachSPThuocDonHang
 AFTER INSERT
 AS
 BEGIN
@@ -382,6 +385,7 @@ BEGIN
     END
 END;
 
+----Trigger kiểm tra voucher của người bán trong đơn hàng
 GO
 CREATE TRIGGER trUniqueVoucherOfShop
 ON VoucherCuaShopTrongDonHang
@@ -409,3 +413,23 @@ BEGIN
         ROLLBACK;
     END
 END;
+
+----Trigger xoá sản phẩm trong giỏ hàng khi sản phẩm hết hàng (SoLuongConLai = 0)
+GO
+CREATE TRIGGER trDeleteOutOfStockProduct
+ON SanPham
+AFTER UPDATE
+AS
+BEGIN
+	DECLARE @MaSP CHAR(8), @SoLuongConLai INT;
+	SELECT @SoLuongConLai = inserted.SoLuongConLai, @MaSP = inserted.MaSP
+	FROM inserted;
+
+	IF(@SoLuongConLai = 0)
+	BEGIN
+		DELETE 
+		FROM DanhSachSPThuocGioHang
+		WHERE MaSP = @MaSP;
+	END
+END
+

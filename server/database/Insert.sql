@@ -204,25 +204,25 @@ INSERT INTO DanhSachSPThuocDonHang VALUES ('10000012', 14, 1, null);
 INSERT INTO DanhSachSPThuocDonHang VALUES ('10000011', 14, 1, null);
 INSERT INTO DanhSachSPThuocDonHang VALUES ('10000013', 14, 1, null);
 
-INSERT INTO DanhGiaSanPham VALUES (1, N'Đóng gói đẹp, giao hành nhanh', 4, '10000001', 0, '654321', 2);
-INSERT INTO DanhGiaSanPham VALUES (2, N'Đóng gói kỹ càng, hàng chất lượng, giao hàng nhanh', 5, '10000002', 0, '123456', 3);
-INSERT INTO DanhGiaSanPham VALUES (3, N'Đóng gói đẹp, giao hành nhanh', 4, '10000003', 0, '123456', 1);
-INSERT INTO DanhGiaSanPham VALUES (4, N'Đóng gói đẹp, giao hành nhanh', 4, '10000003', 0, '654321', 5);
-INSERT INTO DanhGiaSanPham VALUES (5, N'Đóng gói kỹ càng, hàng chất lượng, giao hàng nhanh', 5, '10000004', 0, '123456', 1);
-INSERT INTO DanhGiaSanPham VALUES (6, N'Đóng gói đẹp, giao hành nhanh', 4, '10000005', 0, '654321', 5);
-INSERT INTO DanhGiaSanPham VALUES (7, N'Hàng chất lượng nhưng Shop giao hàng chậm', 3, '10000006', 0, '111111', 6);
-INSERT INTO DanhGiaSanPham VALUES (8, N'Đóng gói đẹp, giao hành nhanh', 4, '10000006', 0, '111111', 7);
-INSERT INTO DanhGiaSanPham VALUES (9, N'Đóng gói đẹp, giao hành nhanh', 4, '10000007', 0, '222222', 8);
-INSERT INTO DanhGiaSanPham VALUES (10, N'Đóng gói kỹ càng, hàng chất lượng, giao hàng nhanh', 5, '10000007', 0, '222222', 9);
-INSERT INTO DanhGiaSanPham VALUES (11, N'Hàng chất lượng nhưng Shop giao hàng chậm', 3, '10000008', 0, '222222', 9);
-INSERT INTO DanhGiaSanPham VALUES (12, N'Đóng gói đẹp, giao hành nhanh', 4, '10000008', 0, '123456', 10);
-INSERT INTO DanhGiaSanPham VALUES (13, N'Đóng gói đẹp, giao hành nhanh', 4, '10000009', 0, '222222', 9);
-INSERT INTO DanhGiaSanPham VALUES (14, N'Đóng gói kỹ càng, hàng chất lượng, giao hàng nhanh', 5, '10000009', 0, '123456', 10);
-INSERT INTO DanhGiaSanPham VALUES (15, N'Giao hàng chậm, đóng gói sơ sài, hàng không như mong đợi', 2, '10000010', 0, '111111', 7);
-INSERT INTO DanhGiaSanPham VALUES (16, N'Hàng chất lượng nhưng Shop giao hàng chậm', 3, '10000010', 0, '654321', 11);
-INSERT INTO DanhGiaSanPham VALUES (17, N'Đóng gói kỹ càng, hàng chất lượng, giao hàng nhanh', 5, '10000011', 0, '654321', 11);
-INSERT INTO DanhGiaSanPham VALUES (18, N'Đóng gói đẹp, giao hành nhanh', 4, '10000012', 0, '111111', 12);
-INSERT INTO DanhGiaSanPham VALUES (19, N'Hàng chất lượng nhưng Shop giao hàng chậm', 3, '10000013', 0, '222222', 13);
+INSERT INTO DanhGiaSanPham VALUES (1, N'Đóng gói đẹp, giao hành nhanh', 4, '10000001', 0, '654321', 2, CONVERT(datetime,'15-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (2, N'Đóng gói kỹ càng, hàng chất lượng, giao hàng nhanh', 5, '10000002', 0, '123456', 3, CONVERT(datetime,'17-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (3, N'Đóng gói đẹp, giao hành nhanh', 4, '10000003', 0, '123456', 1, CONVERT(datetime,'16-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (4, N'Đóng gói đẹp, giao hành nhanh', 4, '10000003', 0, '654321', 5, CONVERT(datetime,'20-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (5, N'Đóng gói kỹ càng, hàng chất lượng, giao hàng nhanh', 5, '10000004', 0, '123456', 1, CONVERT(datetime,'16-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (6, N'Đóng gói đẹp, giao hành nhanh', 4, '10000005', 0, '654321', 5, CONVERT(datetime,'18-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (7, N'Hàng chất lượng nhưng Shop giao hàng chậm', 3, '10000006', 0, '111111', 6, CONVERT(datetime,'22-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (8, N'Đóng gói đẹp, giao hành nhanh', 4, '10000006', 0, '111111', 7, CONVERT(datetime,'21-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (9, N'Đóng gói đẹp, giao hành nhanh', 4, '10000007', 0, '222222', 8, CONVERT(datetime,'25-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (10, N'Đóng gói kỹ càng, hàng chất lượng, giao hàng nhanh', 5, '10000007', 0, '222222', 9, CONVERT(datetime,'26-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (11, N'Hàng chất lượng nhưng Shop giao hàng chậm', 3, '10000008', 0, '222222', 9, CONVERT(datetime,'25-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (12, N'Đóng gói đẹp, giao hành nhanh', 4, '10000008', 0, '123456', 10, CONVERT(datetime,'22-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (13, N'Đóng gói đẹp, giao hành nhanh', 4, '10000009', 0, '222222', 9, CONVERT(datetime,'27-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (14, N'Đóng gói kỹ càng, hàng chất lượng, giao hàng nhanh', 5, '10000009', 0, '123456', 10, CONVERT(datetime,'25-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (15, N'Giao hàng chậm, đóng gói sơ sài, hàng không như mong đợi', 2, '10000010', 0, '111111', 7, CONVERT(datetime,'20-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (16, N'Hàng chất lượng nhưng Shop giao hàng chậm', 3, '10000010', 0, '654321', 11, CONVERT(datetime,'28-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (17, N'Đóng gói kỹ càng, hàng chất lượng, giao hàng nhanh', 5, '10000011', 0, '654321', 11, CONVERT(datetime,'27-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (18, N'Đóng gói đẹp, giao hành nhanh', 4, '10000012', 0, '111111', 12, CONVERT(datetime,'29-11-2023', 105));
+INSERT INTO DanhGiaSanPham VALUES (19, N'Hàng chất lượng nhưng Shop giao hàng chậm', 3, '10000013', 0, '222222', 13, CONVERT(datetime,'28-11-2023', 105));
 
 
 
@@ -417,33 +417,34 @@ INSERT INTO AnhMinhHoaSP VALUES
 ('10000009', 'img/sp9_6.jpg')
 
 INSERT INTO AnhMinhHoaSP VALUES
-('100000010', 'img/sp10_1.jpg'),
-('100000010', 'img/sp10_2.jpg'),
-('100000010', 'img/sp10_3.jpg'),
-('100000010', 'img/sp10_4.jpg'),
-('100000010', 'img/sp10_5.jpg'),
-('100000010', 'img/sp10_6.jpg'),
-('100000010', 'img/sp10_7.jpg')
+('10000010', 'img/sp10_1.jpg'),
+('10000010', 'img/sp10_2.jpg'),
+('10000010', 'img/sp10_3.jpg'),
+('10000010', 'img/sp10_4.jpg'),
+('10000010', 'img/sp10_5.jpg'),
+('10000010', 'img/sp10_6.jpg'),
+('10000010', 'img/sp10_7.jpg')
 
 INSERT INTO AnhMinhHoaSP VALUES
-('100000011', 'img/sp11_1.jpg'),
-('100000011', 'img/sp11_2.jpg'),
-('100000011', 'img/sp11_3.jpg'),
-('100000011', 'img/sp11_4.jpg'),
-('100000011', 'img/sp11_5.jpg'),
-('100000011', 'img/sp11_6.jpg')
+('10000011', 'img/sp11_1.jpg'),
+('10000011', 'img/sp11_2.jpg'),
+('10000011', 'img/sp11_3.jpg'),
+('10000011', 'img/sp11_4.jpg'),
+('10000011', 'img/sp11_5.jpg'),
+('10000011', 'img/sp11_6.jpg')
+INSERT INTO AnhMinhHoaSP VALUES
+('10000012', 'img/sp12_1.jpg'),
+('10000012', 'img/sp12_2.jpg'),
+('10000012', 'img/sp12_3.jpg'),
+('10000012', 'img/sp12_4.jpg'),
+('10000012', 'img/sp12_5.jpg'),
+('10000012', 'img/sp12_6.jpg')
 
 INSERT INTO AnhMinhHoaSP VALUES
-('100000012', 'img/sp12_1.jpg'),
-('100000012', 'img/sp12_2.jpg'),
-('100000012', 'img/sp12_3.jpg'),
-('100000012', 'img/sp12_4.jpg'),
-('100000012', 'img/sp12_5.jpg'),
-('100000012', 'img/sp12_6.jpg')
+('10000013', 'img/sp13_1.jpg'),
+('10000013', 'img/sp13_2.jpg'),
+('10000013', 'img/sp13_3.jpg'),
+('10000013', 'img/sp13_4.jpg'),
+('10000013', 'img/sp13_5.jpg')
 
-INSERT INTO AnhMinhHoaSP VALUES
-('100000013', 'img/sp13_1.jpg'),
-('100000013', 'img/sp13_2.jpg'),
-('100000013', 'img/sp13_3.jpg'),
-('100000013', 'img/sp13_4.jpg'),
-('100000013', 'img/sp13_5.jpg')
+-- 
