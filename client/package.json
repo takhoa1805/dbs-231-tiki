@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "ecommerceplatform",
+=======
+  "name": "client",
+>>>>>>> bf3e347f1203c39aff34029371c9dc5443cc113d
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,9 +15,13 @@
   },
   "dependencies": {
     "react": "^18.2.0",
+<<<<<<< HEAD
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "react-router-dom": "^6.20.1"
+=======
+    "react-dom": "^18.2.0"
+>>>>>>> bf3e347f1203c39aff34029371c9dc5443cc113d
   },
   "devDependencies": {
     "@types/react": "^18.2.37",

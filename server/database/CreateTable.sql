@@ -47,7 +47,7 @@ CREATE TABLE DanhSachSPLienQuan (
 CREATE TABLE SanPham (
 	MaSP CHAR(8) not null,
 	GiaTien DECIMAL(10,2) not null CHECK (GiaTien > 1000),
-	MoTa NVARCHAR(255),
+	MoTa NVARCHAR(MAX),
 	TenSP NVARCHAR(255) not null,
 	XuatXu NVARCHAR(30),
 	SoLuongConLai INT CHECK (SoLuongConLai >= 0),
@@ -56,6 +56,7 @@ CREATE TABLE SanPham (
 	DanhSachLienQuan INT,
 	SPMau CHAR(8),
 	MaNguoiBan CHAR(6) not null,
+	SoSaoTrungBinh DECIMAL(2,1),
 	PRIMARY KEY (MaSP),
 	FOREIGN KEY (SPMau) REFERENCES SanPham(MaSP),
 	FOREIGN KEY (MaThuongHieu) REFERENCES ThuongHieu(MaThuongHieu),
@@ -164,8 +165,8 @@ CREATE TABLE AnhMinhHoaSP (
 
 CREATE TABLE KhoHang (
 	MaKhoHang INT not null,
-	TenKhoHang NVARCHAR(255) not null,
-	DiaChi VARCHAR(255) not null,
+	TenKhoHang VARCHAR(255) not null,
+	DiaChi NVARCHAR(255) not null,
 	UNIQUE(TenKhoHang),
 	PRIMARY KEY (MaKhoHang),
 )
@@ -186,7 +187,6 @@ CREATE TABLE KhuyenMai (
 	TienGiamToiDa DECIMAL(10,2),
 	SoLuongBanDau INT not null CHECK(SoLuongBanDau > 0),
 	SoLuongConLai INT CHECK(SoLuongConLai >= 0),
-	TenKhuyenMai NVARCHAR(255) not null,
 	ThoiGianCoHieuLuc DATE not null,
 	ThoiGianHetHieuLuc DATE not null,
 	LoaiVoucher VARCHAR(50) not null,
@@ -226,7 +226,7 @@ CREATE TABLE DonHang (
 	MaNguoiMua CHAR(6) not null,
 	MaCoupon VARCHAR(50) ,
 	MaVoucherVanChuyen VARCHAR(50),
-	GiaTien DECIMAL(10,2) not null CHECK(GiaTien >= 0),
+	GiaTien DECIMAL(10,2) CHECK(GiaTien >= 0),
 	PRIMARY KEY (MaDonHang),
 	FOREIGN KEY (MaNguoiMua) REFERENCES NguoiMua(MaTK),
 	FOREIGN KEY (MaCoupon) REFERENCES Coupon(MaKhuyenMai),
@@ -243,6 +243,7 @@ CREATE TABLE DanhGiaSanPham (
 	TrangThaiChinhSua INT CHECK (TrangThaiChinhSua IN (0,1)),
 	MaNguoiMua CHAR(6) not null,
 	MaDonHang INT not null,
+	NgayDanhGia DATE,
 	PRIMARY KEY (MaDanhGia),
 	FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP),
 	FOREIGN KEY (MaNguoiMua) REFERENCES NguoiMua(MaTK),
@@ -252,9 +253,8 @@ CREATE TABLE DanhGiaSanPham (
 
 CREATE TABLE HinhAnhVideoDanhGia (
 	MaDanhGia INT not null,
-	HinhAnh VARCHAR(255),
-	Video VARCHAR(255),
-	PRIMARY KEY (MaDanhGia, HinhAnh, Video),
+	HinhAnhVideo VARCHAR(255),
+	PRIMARY KEY (MaDanhGia, HinhAnhVideo),
 	FOREIGN KEY (MaDanhGia) REFERENCES DanhGiaSanPham(MaDanhGia),
 )
 
@@ -264,7 +264,7 @@ CREATE TABLE DanhSachSPThuocDonHang (
 	MaSP CHAR(8) not null,
 	MaDonHang INT not null,
 	SoLuong INT not null CHECK (SoLuong > 0),
-	GiaTien DECIMAL(10,2) not null,
+	GiaTien DECIMAL(10,2),
 	PRIMARY KEY (MaSP, MaDonHang),
 	FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP),
 	FOREIGN KEY (MaDonHang) REFERENCES DonHang(MaDonHang),
@@ -275,11 +275,10 @@ CREATE TABLE DanhSachSPThuocGioHang (
 	MaSP CHAR(8) not null,
 	MaNguoiMua CHAR(6) not null,
 	SoLuong INT not null CHECK (SoLuong > 0),
-	GiaTien DECIMAL(10,2) not null,
+	GiaTien DECIMAL(10,2),
 	PRIMARY KEY (MaSP, MaNguoiMua),
 	FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP),
-	FOREIGN KEY (MaNguoiMua) REFERENCES GioHang(MaNguoiMua),
-
+	FOREIGN KEY (MaNguoiMua) REFERENCES GioHang(MaNguoiMua),	
 )
 
 CREATE TABLE DanhMucSP (
@@ -316,8 +315,9 @@ CREATE TABLE VoucherCuaShopTrongDonHang (
 )
 
 
-----Create TRIGGER-----------------------------------------------------------------------------------
+--Create TRIGGER
 
+----Trigger kiểm tra số lượng hình ảnh minh hoạ của sản phẩm
 GO
 CREATE TRIGGER trCheckImageCount
 ON AnhMinhHoaSP
@@ -341,6 +341,8 @@ BEGIN
     END
 END;
 
+
+----Trigger kiểm tra số lượng còn lại
 GO
 CREATE TRIGGER trCheckQuantityLimitCart
 ON DanhSachSPThuocGioHang
@@ -364,7 +366,7 @@ END;
 
 GO
 CREATE TRIGGER trCheckQuantityLimitOrder
-ON DanhSachSPThuocGioHang
+ON DanhSachSPThuocDonHang
 AFTER INSERT
 AS
 BEGIN
@@ -383,6 +385,7 @@ BEGIN
     END
 END;
 
+----Trigger kiểm tra voucher của người bán trong đơn hàng
 GO
 CREATE TRIGGER trUniqueVoucherOfShop
 ON VoucherCuaShopTrongDonHang
@@ -411,5 +414,22 @@ BEGIN
     END
 END;
 
+----Trigger xoá sản phẩm trong giỏ hàng khi sản phẩm hết hàng (SoLuongConLai = 0)
+GO
+CREATE TRIGGER trDeleteOutOfStockProduct
+ON SanPham
+AFTER UPDATE
+AS
+BEGIN
+	DECLARE @MaSP CHAR(8), @SoLuongConLai INT;
+	SELECT @SoLuongConLai = inserted.SoLuongConLai, @MaSP = inserted.MaSP
+	FROM inserted;
 
+	IF(@SoLuongConLai = 0)
+	BEGIN
+		DELETE 
+		FROM DanhSachSPThuocGioHang
+		WHERE MaSP = @MaSP;
+	END
+END
 

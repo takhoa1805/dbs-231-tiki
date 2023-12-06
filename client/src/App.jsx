@@ -1,4 +1,5 @@
 import { useState } from 'react'
+<<<<<<< HEAD
 import './App.css'
 import Footer from './components/footer';
 import ProductList from './page/productList';
@@ -29,3 +30,22 @@ function App() {
 }
 
 export default App
+=======
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <h1 className="text-4xl font-bold underline">
+        Hello world!
+      </h1>
+    </>
+  )
+}
+
+export default App
+>>>>>>> bf3e347f1203c39aff34029371c9dc5443cc113d
