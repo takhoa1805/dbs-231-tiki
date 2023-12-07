@@ -4,37 +4,48 @@ AS
 BEGIN
     IF @sortBy = 'date_asc'
         SELECT *
-        FROM DanhGiaSanPham
-        WHERE MaSP = @ID
+        FROM DanhGiaSanPham DG
+        LEFT JOIN HinhAnhVideoDanhGia HV ON DG.MaDanhGia = HV.MaDanhGia
+        WHERE DG.MaSP = @ID
         ORDER BY [NgayDanhGia] ASC;
     ELSE IF @sortBy = 'date_desc'
         SELECT *
-        FROM DanhGiaSanPham
-        WHERE MaSP = @ID
+        FROM DanhGiaSanPham DG
+        LEFT JOIN HinhAnhVideoDanhGia HV ON DG.MaDanhGia = HV.MaDanhGia
+        WHERE DG.MaSP = @ID
         ORDER BY [NgayDanhGia] DESC;
     ELSE IF @sortBy = 'rating_asc'
         SELECT *
-        FROM DanhGiaSanPham
-        WHERE MaSP = @ID
+        FROM DanhGiaSanPham DG
+        LEFT JOIN HinhAnhVideoDanhGia HV ON DG.MaDanhGia = HV.MaDanhGia
+        WHERE DG.MaSP = @ID
         ORDER BY SoSao ASC;
     ELSE IF @sortBy = 'rating_desc'
         SELECT *
-        FROM DanhGiaSanPham
-        WHERE MaSP = @ID
+        FROM DanhGiaSanPham DG
+        LEFT JOIN HinhAnhVideoDanhGia HV ON DG.MaDanhGia = HV.MaDanhGia
+        WHERE DG.MaSP = @ID
         ORDER BY SoSao DESC;
     ELSE
         SELECT *
-        FROM DanhGiaSanPham
-        WHERE MaSP = @ID
+        FROM DanhGiaSanPham DG
+        LEFT JOIN HinhAnhVideoDanhGia HV ON DG.MaDanhGia = HV.MaDanhGia
+        WHERE DG.MaSP = @ID
         ORDER BY [NgayDanhGia] DESC;
 END;
+-- kiểm tra thủ tục: EXEC GetRating @ID = 10000003, @sortBy = 'date_asc';
 -- lấy thông tin của đơn hàng
-CREATE PROCEDURE GetProductsInOrder(IN orderID INT)
+CREATE PROCEDURE GetOrderDetails
+    @MaDonHang INT
 AS
 BEGIN
     SELECT *
-    FROM DanhsachSPthuocDonhang p INNER JOIN DonHang od ON p. MaDonHang = od. MaDonHang
-    LEFT JOIN voucher v ON p.MaDonHang = v.MaDonHang
-    WHERE od.MaDonHang = orderID;
+    FROM DonHang
+    WHERE MaDonHang = @MaDonHang;
+    SELECT DSD.MaSP, SP.TenSP, DSD.SoLuong, DSD.GiaTien
+    FROM DanhSachSPThuocDonHang DSD
+    INNER JOIN SanPham SP ON DSD.MaSP = SP.MaSP
+    WHERE DSD.MaDonHang = @MaDonHang;
 END;
+--Kiểm tra thủ tục: EXEC GetOrderDetails @MaDonHang = 1;
 
