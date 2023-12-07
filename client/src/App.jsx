@@ -1,10 +1,12 @@
 import { useState } from 'react'
-<<<<<<< HEAD
 import './App.css'
 import Footer from './components/footer';
 import ProductList from './page/productList';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductDetail from './page/detailProduct';
+import AnalyticsPage from './page/AnalyticsPage';
+import Header from './components/Header';
+import MyOrders from './page/MyOrders';
 function App() {
 
   return (
@@ -17,11 +19,14 @@ function App() {
     //   <Footer></Footer>
     // </>
     <BrowserRouter>
+      <Header/>
       <Routes>
         <Route path='/'>
           <Route index element={<ProductList/>}></Route>
           <Route path='products' element={<ProductList/>}/>
           <Route path='products/:id' element={<ProductDetail/>}/>
+          <Route path='analytics' element={<AnalyticsPage/>}/>
+          <Route path='orders' element={<MyOrders/>}/>
         </Route>
       </Routes>
       <Footer></Footer>
@@ -30,22 +35,3 @@ function App() {
 }
 
 export default App
-=======
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <h1 className="text-4xl font-bold underline">
-        Hello world!
-      </h1>
-    </>
-  )
-}
-
-export default App
->>>>>>> bf3e347f1203c39aff34029371c9dc5443cc113d
