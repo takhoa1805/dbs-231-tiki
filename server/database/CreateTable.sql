@@ -56,7 +56,7 @@ CREATE TABLE SanPham (
 	DanhSachLienQuan INT,
 	SPMau CHAR(8),
 	MaNguoiBan CHAR(6) not null,
-	SoSaoTrungBinh DECIMAL(2,1),
+	SoSaoTrungBinh DECIMAL(2,1) DEFAULT 0.0,
 	PRIMARY KEY (MaSP),
 	FOREIGN KEY (SPMau) REFERENCES SanPham(MaSP),
 	FOREIGN KEY (MaThuongHieu) REFERENCES ThuongHieu(MaThuongHieu),
