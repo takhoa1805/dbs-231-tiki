@@ -1,27 +1,31 @@
-const tedious = require('tedious');
-
+const sql = require('mssql');
 const config = {
-    server: 'localhost',
-    authentication: {
-        type: 'default',
-        options: {
-            userName: 'dbuser',
-            password: 's3kreee7'
-        }
+    user:'khoa',
+    password:'6319',
+    database:'tiki',
+    server: 'KHOALAPTOP\\SQLEXPRESS',  //update me
+    pool:{
+        max:10,
+        min:0,
+        idleTimeoutMillis:30000
     },
-    options: {
-        database: 'my_db',
-        encrypt: true
+    options:{
+        trustServerCertificate:true
     }
 }
 
-module.exports = async()=>{
-    const connection = new tedious.Connection(config)
-    connection.on('connect', (err) => {
-        if (err) {
-            console.error(err.message)
-        } else {
-            console.log('Connected to SQL Server')
-        }
-    })
-}
+// const connection = async()=>{
+//     try{
+//         const promise = await sql.connect(config);
+//         const result = await sql.query('SELECT * FROM SanPham');
+//         console.log(result);
+//     }   catch(err){
+//         console.log(err);
+//     }
+// }
+
+// connection();
+
+module.exports = config;
+
+
