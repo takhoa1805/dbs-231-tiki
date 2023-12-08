@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 
-const {route} = require('./routes');
+const {cart,order,product,statistics}=require('./routes');
+
 
 module.exports = async(app)=>{
     app.use(express.json());
@@ -21,7 +22,11 @@ module.exports = async(app)=>{
         }),
     );
 
-    app.use('/route',route);
+    app.use('/cart',cart);
+    app.use('/order',order);
+    app.use('/product',product);
+    app.use('/statistics',statistics);
+
 
     app.use((req, res, next) => {
         const error = new Error('Not found');

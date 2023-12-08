@@ -1,0 +1,3 @@
+- navigate terminal đến folder server
+- `npm start`
+- Import file `TIKI.postman_collection.js` trong thư mục `database` vào Postman

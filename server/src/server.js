@@ -1,5 +1,4 @@
 const express = require('express');
-const database = require('./config/index');
 const expressApp = require('./app');
 
 
@@ -7,8 +6,15 @@ const expressApp = require('./app');
 //START SERVER
 const startServer = async () => {
   const app = express();
-  await database();
   await expressApp(app);
   app.listen(3000);
 };
 startServer();
+
+// const http = require('http');
+// const app = require('./app');
+// const port = process.env.PORT || 3000;
+
+// const server = http.createServer(app);
+
+// server.listen(port);
