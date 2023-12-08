@@ -1,3 +1,5 @@
-- navigate terminal đến folder server
+- Chỉnh sửa lại thông tin database trong file `./server/src/config/index.js`
+- Chạy SQL Server
+- navigate terminal đến folder `server`
 - `npm start`
 - Import file `TIKI.postman_collection.js` trong thư mục `database` vào Postman
