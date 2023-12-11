@@ -34,9 +34,9 @@ BEGIN
     RETURN @cancel_rate;
 END;
 
-DROP FUNCTION IF EXISTS dbo.cancel_order_rate;
+/*DROP FUNCTION IF EXISTS dbo.cancel_order_rate;
 
-SELECT dbo.cancel_order_rate('2023-11-13', '2023-11-23', '333333') AS CancelRate;
+SELECT dbo.cancel_order_rate('2023-11-13', '2023-11-23', '333333') AS CancelRate;*/
 
 --------------------TỔNG SỐ ĐƠN---------
 CREATE FUNCTION total_order(@from DATE, @to DATE, @id_nguoiban CHAR(6))
@@ -56,39 +56,10 @@ BEGIN
     RETURN @total;
 END;
 
-DROP FUNCTION IF EXISTS dbo.total_order;
+/*DROP FUNCTION IF EXISTS dbo.total_order;
 
-SELECT dbo.total_order('2023-11-13', '2023-11-23', '333333') AS TotalOrder;
-------------------TỔNG SỐ ĐƠN HỦY--------------------
-CREATE FUNCTION total_canceled_order
-(
-    @from DATE,
-    @to DATE,
-    @id_nguoiban CHAR(6)
-)
-RETURNS INT
-AS
-BEGIN 
-    DECLARE @total INT;
-    SET @total = 0;
+SELECT dbo.total_order('2023-11-13', '2023-11-23', '333333') AS TotalOrder;*/
 
-    -- Use COLLATE to ensure case-insensitive comparison if needed
-    SELECT @total = COUNT(DISTINCT d.MaDonHang) 
-    FROM DanhSachSPThuocDonHang d
-    INNER JOIN SanPham s ON d.MaSP = s.MaSP
-    INNER JOIN NguoiBan nb ON s.MaNguoiBan = nb.MaTK
-    INNER JOIN DonHang dh ON d.MaDonHang = dh.MaDonHang
-    WHERE dh.ThoiGian BETWEEN @from AND @to
-      AND dh.TinhTrangDonHang = N'Đã huỷ'
-      AND nb.MaTK = @id_nguoiban;
-
-    RETURN @total;
-END;
-
-
-SELECT dbo.total_canceled_order('2023-11-13', '2023-11-23', '332211') AS TotalCanceledOrders;
-
-DROP FUNCTION IF EXISTS dbo.total_canceled_order;
 ---------------------------------TÍNH DOANH THU NGƯỜI BÁN----------------
 CREATE FUNCTION revenue_statistics
 (
@@ -112,7 +83,7 @@ BEGIN
     RETURN @total;
 END;
 
-SELECT dbo.revenue_statistics('2023-11-13', '2023-11-17','112233') AS TotalRevenue;
+/*SELECT dbo.revenue_statistics('2023-11-13', '2023-11-17','112233') AS TotalRevenue;*/
 -------------------------THỐNG KÊ ĐƠN HÀNG---------------------
 CREATE FUNCTION total_order_status
 (
@@ -176,10 +147,41 @@ RETURN
         CROSS JOIN SuccessfulOrderCounts
 );
 
-SELECT * FROM dbo.total_order_status('2023-11-13', '2023-11-23', '333333');
-DROP FUNCTION IF EXISTS dbo.total_order_status;
+/*SELECT * FROM dbo.total_order_status('2023-11-13', '2023-11-23', '333333');
+DROP FUNCTION IF EXISTS dbo.total_order_status;*/
 
+/*
+------------------TỔNG SỐ ĐƠN HỦY--------------------
+CREATE FUNCTION total_canceled_order
+(
+    @from DATE,
+    @to DATE,
+    @id_nguoiban CHAR(6)
+)
+RETURNS INT
+AS
+BEGIN 
+    DECLARE @total INT;
+    SET @total = 0;
+
+    -- Use COLLATE to ensure case-insensitive comparison if needed
+    SELECT @total = COUNT(DISTINCT d.MaDonHang) 
+    FROM DanhSachSPThuocDonHang d
+    INNER JOIN SanPham s ON d.MaSP = s.MaSP
+    INNER JOIN NguoiBan nb ON s.MaNguoiBan = nb.MaTK
+    INNER JOIN DonHang dh ON d.MaDonHang = dh.MaDonHang
+    WHERE dh.ThoiGian BETWEEN @from AND @to
+      AND dh.TinhTrangDonHang = N'Đã huỷ'
+      AND nb.MaTK = @id_nguoiban;
+
+    RETURN @total;
+END;
+
+
+SELECT dbo.total_canceled_order('2023-11-13', '2023-11-23', '332211') AS TotalCanceledOrders;
+
+DROP FUNCTION IF EXISTS dbo.total_canceled_order;
 SELECT * FROM DonHang;
 SELECT * FROM SanPham;
-SELECT * FROM DanhSachSPThuocDonHang order by MaDonHang;
+SELECT * FROM DanhSachSPThuocDonHang order by MaDonHang;*/
 
