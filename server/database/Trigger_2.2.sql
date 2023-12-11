@@ -85,3 +85,17 @@ BEGIN
 
 END
 
+------Trigger thêm------
+-----Cập nhật số lượng còn lại của sản phẩm-----------
+CREATE TRIGGER Trigger_UpdateSoLuongConLai
+ON DanhSachSPThuocDonHang
+AFTER INSERT
+AS
+BEGIN
+    -- Update the SoLuongConLai attribute in SanPham for each inserted record
+    UPDATE SanPham
+    SET SoLuongConLai = SoLuongConLai - I.SoLuong
+    FROM SanPham SP
+    INNER JOIN inserted I ON SP.MaSP = I.MaSP;
+END;
+
