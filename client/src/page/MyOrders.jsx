@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
 import NavigationOrderTab from '../components/NavigationOrderTab';
+import DetailedOrder from './DetailedOrder';
+import { Link } from "react-router-dom";
 const MyOrders = () => {
     const [selectedTitle, setSelectedTitle] = useState('Tất cả đơn'); // Initial selected title
 
@@ -125,7 +127,11 @@ const MyOrders = () => {
                                         </div>
                                         <div className='flex justify-end space-x-2'>
                                             <button className='border p-2 rounded-md border-sky-600 text-sky-600'>Mua lại</button>
-                                            <button className='border p-2 rounded-md border-sky-600 text-sky-600'>Xem chi tiết</button>
+                                            <Link key={order.id} order={order} to={`/orders/${order.id}`} 
+                                            className='border p-2 rounded-md border-sky-600 text-sky-600'
+                                            >
+                                                Xem chi tiết
+                                            </Link>
                                         </div> 
                                     </div>
                                 </div> 
