@@ -7,6 +7,7 @@ import ProductDetail from './page/detailProduct';
 import AnalyticsPage from './page/AnalyticsPage';
 import Header from './components/Header';
 import MyOrders from './page/MyOrders';
+import DetailedOrder from './page/DetailedOrder';
 function App() {
 
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='products/:id' element={<ProductDetail/>}/>
           <Route path='analytics' element={<AnalyticsPage/>}/>
           <Route path='orders' element={<MyOrders/>}/>
+          <Route path='orders/:id' element={<DetailedOrder/>}/>
         </Route>
       </Routes>
       <Footer></Footer>
