@@ -7,6 +7,7 @@ import img from "../../assets/product.png";
 import tiki from "../../assets/tikitrading.png";
 import auth from "../../assets/chinhhang.png";
 import DataComment from "./dummycomment";
+import Carousel from "../components/Image";
 export default function Detail() {
     const { id } = useParams(); 
         const product = dummyData.find((item) => item.id === parseInt(id));
@@ -45,7 +46,7 @@ export default function Detail() {
             <div className="grid grid-cols-7 gap-x-4">
                 <div className="col-span-5  grid grid-cols-5">
                     <div className="col-span-2 rounded overflow-hidden shadow-lg" >
-                        <img src={img} alt={product.name} className="w-full rounded-lg"  />
+                        <Carousel></Carousel>
                     </div>
                     <div className=" col-span-3 rounded overflow-x-auto shadow-lg p-4 overflow-y-auto">
                         <img src={auth} alt={product.name} className="rounded-lg"  />
