@@ -28,9 +28,11 @@ class ProductController{
             const {_id,price,description,name,origin,quantity,type,brand_id,relative_list,sample_product,seller_id}=input;
             let pool = await sql.connect(config);
 
-            let result = await pool.request().query(`INSERT INTO SanPham (MaSP,GiaTien,MoTa,TenSP,XuatXu,SoLuongConLai,LoaiSP,MaThuongHieu,DanhSachLienQuan,SPMau,MaNguoiBan) 
-                                                    VALUES ('${_id}','${price}','${description}','${name}','${origin}','${quantity}','${type}','${brand_id}','${relative_list}','${sample_product}','${seller_id}')`);
             
+            let result = await pool.request().query(`EXEC Insert_SanPham '${_id}', ${price}, N'${description}', 
+                                                    N'${name}', N'${origin}', ${quantity}, '${type}', '${brand_id}',
+                                                    ${relative_list}, ${sample_product}, '${seller_id}', null;`);
+
             return {result:result.rowsAffected + ` rows affected`}
 
 
@@ -57,7 +59,7 @@ class ProductController{
         try{
             let pool = await sql.connect(config);
 
-            let result = await pool.request().query(`DELETE FROM SanPham WHERE MaSP = ${product_id}`);
+            let result = await pool.request().query(`EXEC Delete_SanPham '${product_id}';`);
 
             return {result:result.rowsAffected + ` rows affected`}
 
@@ -69,11 +71,10 @@ class ProductController{
 
     async updateproduct(input){
         try{
-            const {_id,price,description,name,origin,quantity,type,brand_id,relative_list,sample_product,seller_id}=input;
+            const {_id,price,description,quantity}=input;
             let pool = await sql.connect(config);
 
-            let result = await pool.request().query(`UPDATE SanPham SET GiaTien = '${price}',MoTa='${description}',TenSP='${name}',XuatXu='${origin}',SoLuongConLai='${quantity}',LoaiSP='${type}',MaThuongHieu='${brand_id}',DanhSachLienQuan='${relative_list}',SPMau='${sample_product}',MaNguoiBan='${seller_id}'
-                                                     WHERE MaSP =${_id}`);
+            let result = await pool.request().query(`EXEC Update_SanPham '${_id}', ${price}, N'${description}', ${quantity};`);
             
             return {result:result.rowsAffected + ` rows affected`}
 

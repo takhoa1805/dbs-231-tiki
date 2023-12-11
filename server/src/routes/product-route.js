@@ -65,8 +65,8 @@ router.get('/name/:product_name',async(req,res,next)=>{
 
 router.patch('/update/',async (req,res,next)=>{
     try{
-        const {_id,price,description,name,origin,quantity,type,brand_id,relative_list,sample_product,seller_id}=req.body;
-        const data = await ProductController.updateproduct( {_id,price,description,name,origin,quantity,type,brand_id,relative_list,sample_product,seller_id});
+        const {_id,price,description,quantity}=req.body;
+        const data = await ProductController.updateproduct( {_id,price,description,quantity});
 
         if (data.error) {
             return res.status(400).json(data);
