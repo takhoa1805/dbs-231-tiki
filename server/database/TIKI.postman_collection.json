@@ -7,63 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "localhost:3000/cart/",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/cart/",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"cart",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:3000/order/",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/order/",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"order",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:3000/statistics/",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/statistics/",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"statistics",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Get all products",
 			"request": {
 				"method": "GET",
@@ -103,13 +46,33 @@
 			"response": []
 		},
 		{
+			"name": "Get product by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/product/name/FPT",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"name",
+						"FPT"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Create new product",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"_id\":\"10000010\",\r\n    \"price\":\"1000\",\r\n    \"description\":\"Good\",\r\n    \"name\":\"Something\",\r\n    \"origin\":\"Somewhere\",\r\n    \"quantity\":\"99\",\r\n    \"type\":\"Somekind\",\r\n    \"brand_id\":\"007\",\r\n    \"relative_list\":\"\",\r\n    \"sample_product\":\"10000001\",\r\n    \"seller_id\":\"112233\"\r\n}",
+					"raw": "{\r\n    \"_id\":\"10000022\",\r\n    \"price\":\"200000.00\",\r\n    \"description\":\"Product description\",\r\n    \"name\":\"Product Name\",\r\n    \"origin\":\"Vietnam\",\r\n    \"quantity\":\"50\",\r\n    \"type\":\"DienTuDienLanh\",\r\n    \"brand_id\":\"1001\",\r\n    \"relative_list\":\"1\",\r\n    \"sample_product\":\"10000001\",\r\n    \"seller_id\":\"112233\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -125,6 +88,414 @@
 					"path": [
 						"product",
 						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete product by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/product/delete/10000022",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"delete",
+						"10000022"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update product attributes",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_id\":\"10000001\",\r\n    \"price\":\"10000.00\",\r\n    \"description\":\"Good\",\r\n    \"quantity\":\"99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/product/update/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"update",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/order/all",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get order details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/order/detail/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order",
+						"detail",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get rating - sorted by date - ascending",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/product/rating/date/ascending/10000001",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"rating",
+						"date",
+						"ascending",
+						"10000001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get rating - sorted by date - descending",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/product/rating/date/descending/10000001",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"rating",
+						"date",
+						"descending",
+						"10000001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get rating - sorted by rates - ascending",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/product/rating/rates/ascending/10000001",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"rating",
+						"rates",
+						"ascending",
+						"10000001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get rating - sorted by rates - descending",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/product/rating/rates/descending/10000002",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"rating",
+						"rates",
+						"descending",
+						"10000002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cancel Rate",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"seller_id\":\"332211\",\r\n    \"from\":\"2023-11-13\",\r\n    \"to\":\"2023-11-23\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/statistics/cancel-rate",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"statistics",
+						"cancel-rate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Total Order",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"seller_id\":\"332211\",\r\n    \"from\":\"2023-11-13\",\r\n    \"to\":\"2023-11-23\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/statistics/total-order",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"statistics",
+						"total-order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Total Canceled order",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"seller_id\":\"333333\",\r\n    \"from\":\"2023-11-13\",\r\n    \"to\":\"2023-11-23\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/statistics/total-canceled",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"statistics",
+						"total-canceled"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Revenue",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"seller_id\":\"333333\",\r\n    \"from\":\"2023-11-13\",\r\n    \"to\":\"2023-11-23\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/statistics/revenue",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"statistics",
+						"revenue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Total Orders' Status",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"seller_id\":\"333333\",\r\n    \"from\":\"2023-11-13\",\r\n    \"to\":\"2023-11-23\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/statistics/total-order/status",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"statistics",
+						"total-order",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User's Cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/cart/user/654321",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cart",
+						"user",
+						"654321"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product To Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_id\":\"10000001\",\r\n    \"quantity\":\"1\",\r\n    \"user_id\":\"654321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/cart/add",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cart",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Product From Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_id\":\"10000001\",\r\n    \"user_id\":\"654321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/cart/remove",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cart",
+						"remove"
 					]
 				}
 			},

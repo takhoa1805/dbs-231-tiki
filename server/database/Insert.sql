@@ -42,6 +42,9 @@ INSERT INTO ThuongHieu VALUES ('1007', N'gufoods');
 INSERT INTO ThuongHieu VALUES ('1008', N'SANEST');
 INSERT INTO ThuongHieu VALUES ('1009', N'FPT');
 INSERT INTO ThuongHieu VALUES ('1010', N'ELSA');
+INSERT INTO ThuongHieu VALUES ('1011', N'OEM');
+INSERT INTO ThuongHieu VALUES ('1012', N'LADOS');
+INSERT INTO ThuongHieu VALUES ('1013', N'Nhã Nam');
 
 
 INSERT INTO DanhSachSPLienQuan VALUES (1);
@@ -54,27 +57,32 @@ INSERT INTO DanhSachSPLienQuan VALUES (7);
 INSERT INTO DanhSachSPLienQuan VALUES (8);
 
 
-INSERT INTO SanPham VALUES ('10000001', 2948000.00, N'Dung lượng pin lớn 5000mAh, sử dụng lâu dài lên đến 2 ngày. Màn hình 90Hz, hiển thị sắc nét và cuộn lướt mượt mà. Hệ thống camera gồm 3 camera 50MP, chụp ảnh chất lượng cao và khả năng phóng to, thu nhỏ.', N'Điện thoại Samsung Galaxy A04s (4GB/64GB) ', N'Trung Quốc', 400, 'DienTuDienLanh', '1001', 1, null, '112233',null);
-INSERT INTO SanPham VALUES ('10000002', 43000.00, N'Lõi lọc làm từ sợi bông PP chất lượng cao, đảm bảo hiệu quả lọc tốt. Cấu tạo nén chặt giúp nâng cao khả năng lọc và tuổi thọ.', N'Lõi lọc nước số 1 Kangaroo thay thế cho các loại máy lọc RO ', N'Việt Nam', 300, 'DienTuDienLanh', '1002', 2, null, '112233',null);
-INSERT INTO SanPham VALUES ('10000003', 389000.00, N'Vải Gió Phom Regular Fit, Thiết Kế Trơn Túi Dáng Hộp, Khóa Kéo Tiện Lợi', N'Áo Khoác Nam Jacket Cổ Bẻ', N'Việt Nam', 945, 'ThoiTrang', '1003', 3, null, '332211',null);
-INSERT INTO SanPham VALUES ('10000004', 168000.00, N'Chất vải Kaki mềm mịn, co giãn nhẹ và ít nhăn khi gập. Phom dáng ôm cơ thể, tôn dáng người mặc. Đường may chắc chắn, tỉ mỉ, tinh tế cả những chi tiết nhỏ.', N'Quần Tây Âu Nam', N'Trung Quốc', 28, 'ThoiTrang', '1004', 3, null, '332211',null);
-INSERT INTO SanPham VALUES ('10000005', 66000.00, N'PVI là doanh nghiệp bảo hiểm số 1 VN từ 2014 thành lập từ 2011.EZIN là nền tảng số hóa bảo hiểm số 1 VN', N'Bảo hiểm bắt buộc trách nhiệm dân sự xe máy ', N'Việt Nam', 102, 'BaoHiem', '1005', 4, null, '333333',null);
-INSERT INTO SanPham VALUES ('10000006', 120000.00, N'PVI là doanh nghiệp bảo hiểm số 1 VN từ 2014 thành lập từ 2011.EZIN là nền tảng số hóa bảo hiểm số 1 VN', N'Bảo Hiểm Bình An', N'Việt Nam', 53, 'BaoHiem', '1005', 4, null, '333333',null);
-INSERT INTO SanPham VALUES ('10000007', 70000.00, N'Câu chuyện cảm động về tình yêu và sự sống. Ngôn ngữ sâu sắc, gần gũi và tinh tế. Được chuyển thể thành phim điện ảnh thành công.', N'Cây Cam Ngọt Của Tôi', N'Việt Nam', 94, 'Sach', null, 5, null, '112233',null);
-INSERT INTO SanPham VALUES ('10000008', 25000.00, N'Câu chuyện căng thẳng và hấp dẫn với sự xuất hiện của tổ chức Áo Đen. Sự phát triển đáng kinh ngạc của nhân vật chính Conan.', N'Thám Tử Lừng Danh Conan Tập 101', N'Việt Nam', 902, 'Sach', '1006', 6, null, '112233',null);
-INSERT INTO SanPham VALUES ('10000009', 25000.00, N'Câu chuyện căng thẳng và hấp dẫn với sự xuất hiện của tổ chức Áo Đen. Sự phát triển đáng kinh ngạc của nhân vật chính Conan.', N'Thám Tử Lừng Danh Conan Tập 100', N'Việt Nam', 890, 'Sach', '1006', 6, null, '112233',null);
-INSERT INTO SanPham VALUES ('10000010', 56000.00, N'Nui gạo lứt và nui gạo ngũ sắc từ thành phần tự nhiên, không chứa phẩm màu nhân tạo. Nui gạo lứt phù hợp cho ăn kiêng, eat clean và thực dưỡng. Đặc sản làng bột Sa Đéc - Đồng Tháp, đảm bảo chất lượng và hương vị đặc biệt. ', N'Nui gạo lứt / nui ngũ sắc GUfoods (Gói 500g) ', N'Việt Nam', 12, 'BachHoa', '1007', 7, null, '333333', null);
-INSERT INTO SanPham VALUES ('10000011', 222000.00, N'Sản phẩm Nước Yến sào Khánh Hòa Sanest đóng lọ là sản phẩm có giá trị dinh dưỡng cao được chế biến từ nguồn nguyên liệu Yến sào thiên nhiên Khánh Hòa theo phương pháp cổ truyền kết hợp với khoa học công nghệ hiện đại. Nước Yến sào Khánh Hòa Sanest không đường đóng lọ thích hợp với những người ăn kiêng, những người bị bệnh tiểu đường, cần hạn chế về sự hấp thu đường.', N'[Hộp 6 lọ] Nước Yến sào Sanest Khánh Hòa đóng lọ 70ml', N'Việt Nam', 63, 'BachHoa', '1008', 7, null, '333333', null);
-INSERT INTO SanPham VALUES ('10000012', 720000.00, N'Xem trọn vẹn tất cả các ứng dụng như khi sử dụng trên đầu thu FPT Play Box. Ứng dụng chạy được trên tất cả các nhà mạng và các thiết bị thông minh. Gia hạn gói cước đơn giản. Được hỗ trợ kỹ thuật từ FPT 24/7 ', N'FPT Play - Gói VIP 6 tháng', N'Việt Nam', 12, 'Evoucher', '1009', 8, null, '332211', null);
-INSERT INTO SanPham VALUES ('10000013', 1745000.00, N'ELSA Speak là Ứng dụng học nói & giao tiếp tiếng Anh chuẩn bản xứ, sử dụng công nghệ Trí Tuệ Nhân Tạo tiên tiến hàng đầu thế giới, có khả năng nhận diện giọng nói chuẩn xác 95%', N'Voucher Gói Học ELSA Pro Trọn Đời', N'Việt Nam', 43, 'Evoucher', '1010', 8, null, '332211', null);
-
-
+INSERT INTO SanPham VALUES ('10000001', 2948000.00, N'Dung lượng pin lớn 5000mAh, sử dụng lâu dài lên đến 2 ngày. Màn hình 90Hz, hiển thị sắc nét và cuộn lướt mượt mà. Hệ thống camera gồm 3 camera 50MP, chụp ảnh chất lượng cao và khả năng phóng to, thu nhỏ.', N'Điện thoại Samsung Galaxy A04s (4GB/64GB) ', N'Trung Quốc', 400, 'DienTuDienLanh', '1001', 1, null, '112233',default);
+INSERT INTO SanPham VALUES ('10000002', 43000.00, N'Lõi lọc làm từ sợi bông PP chất lượng cao, đảm bảo hiệu quả lọc tốt. Cấu tạo nén chặt giúp nâng cao khả năng lọc và tuổi thọ.', N'Lõi lọc nước số 1 Kangaroo thay thế cho các loại máy lọc RO ', N'Việt Nam', 300, 'DienTuDienLanh', '1002', 2, null, '112233',default);
+INSERT INTO SanPham VALUES ('10000003', 389000.00, N'Vải Gió Phom Regular Fit, Thiết Kế Trơn Túi Dáng Hộp, Khóa Kéo Tiện Lợi', N'Áo Khoác Nam Jacket Cổ Bẻ', N'Việt Nam', 945, 'ThoiTrang', '1003', 3, null, '332211',default);
+INSERT INTO SanPham VALUES ('10000004', 168000.00, N'Chất vải Kaki mềm mịn, co giãn nhẹ và ít nhăn khi gập. Phom dáng ôm cơ thể, tôn dáng người mặc. Đường may chắc chắn, tỉ mỉ, tinh tế cả những chi tiết nhỏ.', N'Quần Tây Âu Nam', N'Trung Quốc', 28, 'ThoiTrang', '1004', 3, null, '332211',default);
+INSERT INTO SanPham VALUES ('10000005', 66000.00, N'PVI là doanh nghiệp bảo hiểm số 1 VN từ 2014 thành lập từ 2011.EZIN là nền tảng số hóa bảo hiểm số 1 VN', N'Bảo hiểm bắt buộc trách nhiệm dân sự xe máy ', N'Việt Nam', 102, 'BaoHiem', '1005', 4, null, '333333',default);
+INSERT INTO SanPham VALUES ('10000006', 120000.00, N'PVI là doanh nghiệp bảo hiểm số 1 VN từ 2014 thành lập từ 2011.EZIN là nền tảng số hóa bảo hiểm số 1 VN', N'Bảo Hiểm Bình An', N'Việt Nam', 53, 'BaoHiem', '1005', 4, null, '333333',default);
+INSERT INTO SanPham VALUES ('10000007', 70000.00, N'Câu chuyện cảm động về tình yêu và sự sống. Ngôn ngữ sâu sắc, gần gũi và tinh tế. Được chuyển thể thành phim điện ảnh thành công.', N'Cây Cam Ngọt Của Tôi', N'Việt Nam', 94, 'Sach', null, 5, null, '112233',default);
+INSERT INTO SanPham VALUES ('10000008', 25000.00, N'Câu chuyện căng thẳng và hấp dẫn với sự xuất hiện của tổ chức Áo Đen. Sự phát triển đáng kinh ngạc của nhân vật chính Conan.', N'Thám Tử Lừng Danh Conan Tập 101', N'Việt Nam', 902, 'Sach', '1006', 6, null, '112233',default);
+INSERT INTO SanPham VALUES ('10000009', 25000.00, N'Câu chuyện căng thẳng và hấp dẫn với sự xuất hiện của tổ chức Áo Đen. Sự phát triển đáng kinh ngạc của nhân vật chính Conan.', N'Thám Tử Lừng Danh Conan Tập 100', N'Việt Nam', 890, 'Sach', '1006', 6, null, '112233',default);
+INSERT INTO SanPham VALUES ('10000010', 56000.00, N'Nui gạo lứt và nui gạo ngũ sắc từ thành phần tự nhiên, không chứa phẩm màu nhân tạo. Nui gạo lứt phù hợp cho ăn kiêng, eat clean và thực dưỡng. Đặc sản làng bột Sa Đéc - Đồng Tháp, đảm bảo chất lượng và hương vị đặc biệt. ', N'Nui gạo lứt / nui ngũ sắc GUfoods (Gói 500g) ', N'Việt Nam', 12, 'BachHoa', '1007', 7, null, '333333', default);
+INSERT INTO SanPham VALUES ('10000011', 222000.00, N'Sản phẩm Nước Yến sào Khánh Hòa Sanest đóng lọ là sản phẩm có giá trị dinh dưỡng cao được chế biến từ nguồn nguyên liệu Yến sào thiên nhiên Khánh Hòa theo phương pháp cổ truyền kết hợp với khoa học công nghệ hiện đại. Nước Yến sào Khánh Hòa Sanest không đường đóng lọ thích hợp với những người ăn kiêng, những người bị bệnh tiểu đường, cần hạn chế về sự hấp thu đường.', N'[Hộp 6 lọ] Nước Yến sào Sanest Khánh Hòa đóng lọ 70ml', N'Việt Nam', 63, 'BachHoa', '1008', 7, null, '333333', default);
+INSERT INTO SanPham VALUES ('10000012', 720000.00, N'Xem trọn vẹn tất cả các ứng dụng như khi sử dụng trên đầu thu FPT Play Box. Ứng dụng chạy được trên tất cả các nhà mạng và các thiết bị thông minh. Gia hạn gói cước đơn giản. Được hỗ trợ kỹ thuật từ FPT 24/7 ', N'FPT Play - Gói VIP 6 tháng', N'Việt Nam', 12, 'Evoucher', '1009', 8, null, '332211', default);
+INSERT INTO SanPham VALUES ('10000013', 1745000.00, N'ELSA Speak là Ứng dụng học nói & giao tiếp tiếng Anh chuẩn bản xứ, sử dụng công nghệ Trí Tuệ Nhân Tạo tiên tiến hàng đầu thế giới, có khả năng nhận diện giọng nói chuẩn xác 95%', N'Voucher Gói Học ELSA Pro Trọn Đời', N'Việt Nam', 43, 'Evoucher', '1010', 8, null, '332211', default);
+INSERT INTO SanPham VALUES ('10000014', 251000.00, N'Tương thích với nhiều dòng Smart TV Samsung, bao gồm cả TV 4K và TV QLED. Điều khiển bằng giọng nói, tiện lợi và dễ dàng sử dụng. Kết nối qua sóng Bluetooth, ổn định và có thể điều khiển từ xa.', N'Remote Điều Khiển TV Giọng Nói Dành Cho SAMSUNG Smart Tivi 4K, QLED - Grade A', N'Trung Quốc', 19, 'DienTuDienLanh', '1011', 1, null, '112233', default);
+INSERT INTO SanPham VALUES ('10000015', 189000.00, N'Phom váy chữ A dài qua gối tôn dáng. Chân váy lưng cao phía trước có nút rất duyên dáng tạo điểm nhấn riêng cho sản phẩm. Chất liệu vải nhập có độ co giãn tạo cảm giác thoáng mát, dễ chịu. Có khóa sau dấu không lộ viền. Dễ mix nhiều kiểu áo khác nhau.', N'Chân Váy Công Sở New Design Thiết Kế Dáng Váy chữ A, Dài Qua Gối ,Phối Nút, Phom Chuẩn Tôn Dáng Sang Trọng Vải Tốt co Giãn', N'Việt Nam', 48, 'ThoiTrang', '1011', null, null, '332211', default);
+INSERT INTO SanPham VALUES ('10000016', 116000.00, N'Chất liệu kate lụa mềm mát, thấm hút mồ hôi tốt. Áo co giãn nhẹ, mặc cực thoải mái và ít nhăn. Kiểu dáng thiết kế đơn giản, trẻ trung và dễ phối đồ.', N'Áo sơ mi nam trơn tay dài cao cấp Lados - 779 chất kate lụa mềm mát, thấm hút mồ hôi', N'Việt Nam', 223, 'ThoiTrang', '1012', 3, null, '332211', default);
+INSERT INTO SanPham VALUES ('10000017', 49770.00, N'Tiểu thuyết Nhà giả kim của Paulo Coelho như một câu chuyện cổ tích giản dị, nhân ái, giàu chất thơ, thấm đẫm những minh triết huyền bí của phương Đông. Trong lần xuất bản đầu tiên tại Brazil vào năm 1988, sách chỉ bán được 900 bản. Nhưng, với số phận đặc biệt của cuốn sách dành cho toàn nhân loại, vượt ra ngoài biên giới quốc gia, Nhà giả kim đã làm rung động hàng triệu tâm hồn, trở thành một trong những cuốn sách bán chạy nhất mọi thời đại, và có thể làm thay đổi cuộc đời người đọc.', N'Nhà Giả Kim (Tái Bản 2020)', N'Việt Nam', 103, 'Sach', '1013', null, null, '333333', default);
 
 INSERT INTO DienTuDienLanh VALUES ('10000001', CONVERT(datetime, '09-06-2023', 105), N'Điện tử', 365);
 INSERT INTO DienTuDienLanh VALUES ('10000002', CONVERT(datetime, '12-07-2023', 105), N'Tem bảo hành', 30);
+INSERT INTO DienTuDienLanh VALUES ('10000014', CONVERT(datetime, '18-08-2023', 105), N'Tem bảo hành', 90);
 
 INSERT INTO ThoiTrang VALUES ('10000003', 'Polyester');
 INSERT INTO ThoiTrang VALUES ('10000004', 'Kaki');
+INSERT INTO ThoiTrang VALUES ('10000015', 'Polyester');
+INSERT INTO ThoiTrang VALUES ('10000016', 'Kate');
 
 INSERT INTO KichCoThoiTrang VALUES ('10000003', 'S');
 INSERT INTO KichCoThoiTrang VALUES ('10000003', 'M');
@@ -88,6 +96,15 @@ INSERT INTO KichCoThoiTrang VALUES ('10000004', '30');
 INSERT INTO KichCoThoiTrang VALUES ('10000004', '31');
 INSERT INTO KichCoThoiTrang VALUES ('10000004', '32');
 INSERT INTO KichCoThoiTrang VALUES ('10000004', '34');
+INSERT INTO KichCoThoiTrang VALUES ('10000015', 'S');
+INSERT INTO KichCoThoiTrang VALUES ('10000015', 'M');
+INSERT INTO KichCoThoiTrang VALUES ('10000015', 'L');
+INSERT INTO KichCoThoiTrang VALUES ('10000015', 'XL');
+INSERT INTO KichCoThoiTrang VALUES ('10000016', 'S');
+INSERT INTO KichCoThoiTrang VALUES ('10000016', 'M');
+INSERT INTO KichCoThoiTrang VALUES ('10000016', 'L');
+INSERT INTO KichCoThoiTrang VALUES ('10000016', 'XL');
+INSERT INTO KichCoThoiTrang VALUES ('10000016', 'XXL');
 
 INSERT INTO MauSacThoiTrang VALUES ('10000003', N'Vàng');
 INSERT INTO MauSacThoiTrang VALUES ('10000003', N'Đen');
@@ -95,6 +112,11 @@ INSERT INTO MauSacThoiTrang VALUES ('10000003', N'Xanh rêu');
 INSERT INTO MauSacThoiTrang VALUES ('10000004', N'Xám');
 INSERT INTO MauSacThoiTrang VALUES ('10000004', N'Xanh Đen');
 INSERT INTO MauSacThoiTrang VALUES ('10000004', N'Đen');
+INSERT INTO MauSacThoiTrang VALUES ('10000015', N'Đen');
+INSERT INTO MauSacThoiTrang VALUES ('10000015', N'Vàng');
+INSERT INTO MauSacThoiTrang VALUES ('10000016', N'Đen');
+INSERT INTO MauSacThoiTrang VALUES ('10000016', N'Xanh biển');
+INSERT INTO MauSacThoiTrang VALUES ('10000016', N'Xanh đen');
 
 INSERT INTO BaoHiem VALUES ('10000005', 'Xe máy trên 50cc', CONVERT(datetime,'31-12-2026', 105));
 INSERT INTO BaoHiem VALUES ('10000006', 'Người', CONVERT(datetime,'31-12-2027', 105));
@@ -102,10 +124,12 @@ INSERT INTO BaoHiem VALUES ('10000006', 'Người', CONVERT(datetime,'31-12-2027
 INSERT INTO Sach VALUES ('10000007', 2022, 244, null, N'Hội Nhà Văn');
 INSERT INTO Sach VALUES ('10000008', 2023, 180, CONVERT(datetime,'17-11-2023', 105), N'Kim Đồng');
 INSERT INTO Sach VALUES ('10000009', 2023, 178, CONVERT(datetime,'20-10-2023', 105), N'Kim Đồng');
+INSERT INTO Sach VALUES ('10000017', 2020, 228, CONVERT(datetime,'04-01-2020', 105), N'NXB Hà Nội');
 
 INSERT INTO TacGiaSach VALUES ('10000007', N'Mauro de Vasconcelos');
 INSERT INTO TacGiaSach VALUES ('10000008', N'Gosho Aoyama');
 INSERT INTO TacGiaSach VALUES ('10000009', N'Gosho Aoyama');
+INSERT INTO TacGiaSach VALUES ('10000017', N'Paulo Coelho');
 
 INSERT INTO BachHoa VALUES ('10000010', CONVERT(datetime,'11-06-2023', 105), CONVERT(datetime,'11-02-2024', 105));
 INSERT INTO BachHoa VALUES ('10000011', CONVERT(datetime,'20-09-2023', 105), CONVERT(datetime,'20-12-2023', 105));
@@ -438,5 +462,33 @@ INSERT INTO AnhMinhHoaSP VALUES
 ('10000013', 'img/sp13_3.jpg'),
 ('10000013', 'img/sp13_4.jpg'),
 ('10000013', 'img/sp13_5.jpg')
+
+INSERT INTO AnhMinhHoaSP VALUES
+('10000014', 'img/sp14_1.jpg'),
+('10000014', 'img/sp14_2.jpg'),
+('10000014', 'img/sp14_3.jpg'),
+('10000014', 'img/sp14_4.jpg'),
+('10000014', 'img/sp14_5.jpg')
+
+INSERT INTO AnhMinhHoaSP VALUES
+('10000015', 'img/sp15_1.jpg'),
+('10000015', 'img/sp15_2.jpg'),
+('10000015', 'img/sp15_3.jpg'),
+('10000015', 'img/sp15_4.jpg'),
+('10000015', 'img/sp15_5.jpg')
+
+INSERT INTO AnhMinhHoaSP VALUES
+('10000016', 'img/sp16_1.jpg'),
+('10000016', 'img/sp16_2.jpg'),
+('10000016', 'img/sp16_3.jpg'),
+('10000016', 'img/sp16_4.jpg'),
+('10000016', 'img/sp16_5.jpg')
+
+INSERT INTO AnhMinhHoaSP VALUES
+('10000017', 'img/sp17_1.jpg'),
+('10000017', 'img/sp17_2.jpg'),
+('10000017', 'img/sp17_3.jpg'),
+('10000017', 'img/sp17_4.jpg'),
+('10000017', 'img/sp17_5.jpg')
 
 -- 
