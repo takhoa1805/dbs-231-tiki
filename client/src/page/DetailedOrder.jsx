@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import NavigationOrderTab from '../components/NavigationOrderTab';
 const SanPham = [
     {
@@ -43,7 +43,7 @@ const SanPham = [
         {
           MaSP: 'SP000002',
           SoLuong: 1,
-          GiaTien: 50000, // Example price for the product
+          GiaTien: 50, // Example price for the product
         },
       ],
     },
@@ -53,12 +53,12 @@ const SanPham = [
         {
           MaSP: 'SP000001',
           SoLuong: 1,
-          GiaTien: 77000, // Example price for the product
+          GiaTien: 77, // Example price for the product
         },
         {
           MaSP: 'SP000002',
           SoLuong: 1,
-          GiaTien: 77000, // Example price for the product
+          GiaTien: 128, // Example price for the product
         },
       ],
     },
@@ -102,6 +102,9 @@ const DetailedOrder = () => {
   const OrderId = useParams();
   const donHang = DonHang[OrderId.id-1];
   const sanPham = DanhSachSPThuocDonHang[OrderId.id-1];
+  const formattedNumber = (number)=>{
+    return number.toLocaleString('en-US',{ minimumFractionDigits: 3 });
+  }
   return (
     <div className='flex justify-center w-full bg-[#f5f4fb]'>
         <div className='w-[1200px]'>
@@ -171,11 +174,13 @@ const DetailedOrder = () => {
                                     <div className="basis-2/12 text-right">Tạm tính</div>
 
                                 </div>
+                                {sanPham.Products.map((product, index) => (
                                 <div className='flex flex-row items-center space-x-4 border-t border-b mx-4 py-5'>         
                                     <div className='flex basis-6/12'>
                                       <img className='w-16 h-16' src="https://salt.tikicdn.com/cache/200x200/ts/product/d2/76/c1/5a9bf18968aeb1f43add175f3908b961.jpg" alt="avatar"/>
                                       <div className='flex flex-col items-top h-full space-y-2'>
-                                          <div className='text-sm'>{SanPham[0].TenSP}</div>
+                                      
+                                          <div className='text-sm'>{product.TenSP}</div>
                                           <div className='text-xs flex flex-row items-center space-x-2'>
                                               Cung cấp bởi 
                                               {'\u00A0'}
@@ -185,7 +190,7 @@ const DetailedOrder = () => {
                                               
                                           </div>
                                           <div className='text-xs'>
-                                            Mã sản phẩm: {SanPham[0].MaSP}
+                                            Mã sản phẩm: {product.MaSP}
                                           </div>
                                           <div className='flex flex-row w-full'>
                                                 <div className='flex justify-end items-center text-xs'>
@@ -199,19 +204,19 @@ const DetailedOrder = () => {
                                     </div>
                                     
                                     <div className='items-top h-full basis-2/12'>
-                                        {sanPham.Products[0].GiaTien} ₫
+                                        {formattedNumber(product.GiaTien)} ₫
                                     </div>
                                     <div className='items-top h-full basis-2/12'>
-                                        {sanPham.Products[0].SoLuong}
+                                        {product.SoLuong}
                                     </div>
                                     <div className='items-top h-full basis-2/12'>
-                                        {0} ₫
+                                        {formattedNumber(0)} ₫
                                     </div>
                                     <div className='items-top h-full text-right basis-2/12'>
-                                        {sanPham.Products[0].GiaTien} ₫
+                                        {formattedNumber(product.GiaTien)} ₫
                                     </div>
                                     
-                                 </div>
+                                 </div>))}
                                  <div className='flex justify-end w-full p-4'>
                                     <div className='flex flex-col justify-right space-y-2'>
                                         <div className='flex justify-end items-center'>
@@ -232,16 +237,21 @@ const DetailedOrder = () => {
                                         </div>
                                         <div className='flex justify-end items-center'>
                                             <p className='text-lg'>Tổng cộng</p>
-                                            {`: ${donHang.GiaTien*1000} ₫`}
-                                        </div>
-                                        <div className='flex justify-end space-x-2'>
-                                            <button className='border p-2 rounded-md border-sky-600 text-sky-600'>Mua lại</button>
+                                            <div className='text-red-400'>
+                                              {`: ${donHang.GiaTien*1000} ₫`}
+                                            </div>
                                         </div> 
                                     </div>
                                 </div>
-
                             </div>
-                        
+                        <div className='flex justify-start space-x-4'>
+                          <Link to='/orders' className='text-blue-400 align-center flex my-auto'>
+                          {'<'}{'<'}{'<'}Quay lại đơn hàng của tôi
+                          </Link>
+                          <button className='px-10 py-2 bg-yellow-300 rounded-md'>
+                            Theo dõi đơn hàng
+                          </button>
+                        </div>
                     </div>
                     
                 </div>

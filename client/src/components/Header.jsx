@@ -1,9 +1,17 @@
-import React from 'react'
+import React,{useContext, useState} from 'react'
+import { Link} from 'react-router-dom';
 import logo from '../../assets/header/logo.png';
+import { Context } from '../context/context.jsx';
+
 const Header = () => {
+    const {numProduct}=useContext(Context);
+    console.log(numProduct);
+  const [showDropdown, setShowDropdown] = useState(false);
   return (
     <div className='w-full flex flex-row py-2 justify-center space-x-12'>
-        <img className='w-[72px]' src={logo} alt=''/>
+        <Link to="/" className='cursor-pointer'>
+            <img className='w-[72px]' src={logo} alt='Logo' />
+        </Link>
         <div className='flex flex-col justify-between text-slate-500 space-y-4'>
             <div className='w-full flex'>   
                 <form>   
@@ -33,17 +41,40 @@ const Header = () => {
         </div>
         <div className='flex flex-col justify-between'>
             <div className='flex flex-row justify-end'>
-                <button className="p-2 flex flex-row space-x-2 rounded-lg hover:bg-blue-100">
+                <Link to="/" className="p-2 flex flex-row space-x-2 rounded-lg hover:bg-blue-100">
                     <img className='w-6' src="https://salt.tikicdn.com/ts/upload/32/56/db/d919a4fea46f498b5f4708986d82009d.png" alt="header_menu_item_home"/>
                     <div className='text-slate-500'>Trang chủ</div>
-                </button>
-                <button className="p-2 flex flex-row space-x-2 rounded-lg hover:bg-slate-100 ">
+                </Link>
+                <button onClick={() => setShowDropdown(!showDropdown)} 
+                className="relative p-2 flex flex-row space-x-2 rounded-lg hover:bg-slate-100 ">
                     <img className='w-6' src="https://salt.tikicdn.com/ts/upload/07/d5/94/d7b6a3bd7d57d37ef6e437aa0de4821b.png" alt="header_header_account_img"/>
                     <button className='text-slate-500'>Tài khoản</button>
+                    {showDropdown && (
+                    <div className="absolute w-60 top-10 right-0 mt-2 bg-white border rounded-lg shadow-md z-10 flex flex-col">
+                        <ul className="py-1">
+                        <li>
+                            <button className="block text-left w-full px-4 py-2 text-gray-800 hover:bg-gray-200">Thông tin tài khoản</button>
+                        </li>
+                        <li onClick={() => setShowDropdown(false)}>
+                            <Link to="/orders" className="block px-4 py-2 text-left w-full text-gray-800 hover:bg-gray-200 focus:outline-none">Đơn hàng của tôi</Link>
+                        </li>
+                        <li>
+                            <button className="block px-4 py-2 text-left w-full text-gray-800 hover:bg-gray-200">Trung tâm hỗ trợ</button>
+                        </li>
+                        <li>
+                            <button className="block px-4 py-2 text-left w-full text-gray-800 hover:bg-gray-200">Đăng xuất</button>
+                        </li>
+                        </ul>
+                    </div>
+                    )}
                 </button>
+                
                 <div className='my-2 mx-4 border-r'></div>
-                <button className="p-2 flex flex-row space-x-2 rounded-lg hover:bg-slate-100">
+                <button className="p-2 flex flex-row space-x-2 rounded-lg hover:bg-slate-100 relative">
                     <img className='w-6' src="https://salt.tikicdn.com/ts/upload/51/e2/92/8ca7e2cc5ede8c09e34d1beb50267f4f.png" alt="header_header_img_Cart"/>
+                    <div className='absolute right-0 bottom-6 text-white bg-red-500 rounded-full text-sm px-0.5'>
+                        {numProduct}
+                    </div>
                 </button>
             </div>
             <div className='w-full flex flex-row space-x-2'>
