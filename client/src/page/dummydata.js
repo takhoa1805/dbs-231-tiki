@@ -79,15 +79,6 @@ const dummyData = [
       name: "Product 16",
       price: 230,
     },
-    {
-      id: 17,
-      name: "Product 17",
-      price: 250,
-    },
-    {
-      id: 18,
-      name: "Product 18",
-      price: 270}  
   ];
   
   export default dummyData;

@@ -11,7 +11,6 @@ import sale8 from "../../assets/sale8.png";
 import sale9 from "../../assets/sale9.png";
 import img from "../../assets/product.png";
 import { FaStar } from 'react-icons/fa';
-
 import dummyData from "./dummydata";
 export default function ProductList()
 {    function renderStars(rating) {
@@ -31,6 +30,9 @@ export default function ProductList()
     }      
     return(
         <div className="p-20">
+            <div className="flex justify-end pb-10">
+                <Link to={'/create'} className="rounded bg-blue-500 p-2 text-white hover:shadow-xl">Đăng sản phẩm</Link>
+            </div>
             <div className="grid grid-cols-6 gap-x-4">
                 <div className="col-span-2">
                     <img src={sale1} alt="Image 1" className="w-full rounded-lg" />
@@ -52,8 +54,8 @@ export default function ProductList()
                     <img src={sale9} alt="Image 1" className="w-full rounded-lg" />
                 </div>           
             </div>
-            <div><p className="font-bold text-lg text-black m-4">Gợi ý hôm nay</p>
-                <div className="grid grid-cols-6">
+            <div><p className="font-bold text-lg text-black mr-10 ml-10 mt-10">Gợi ý hôm nay</p>
+                <div className="grid grid-cols-4 gap-8 p-10 mr-10 ml-10">
                     {dummyData.map((product, index) => (
                     <Link key={index} to={`/products/${index}`} className="max-w-sm rounded overflow-hidden shadow-lg">
                         <img

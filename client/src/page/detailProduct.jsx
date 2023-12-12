@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import { useParams } from "react-router-dom";
 import { FaStar } from 'react-icons/fa';
 import { FaCheck } from 'react-icons/fa';
@@ -156,6 +158,8 @@ export default function Detail() {
                     </div>
                     <button className="rounded bg-red-500 p-2 text-white w-full hover:shadow-xl">Mua ngay</button>
                     <button className="rounded border p-2 mt-4 border-blue-500 text-blue-500 w-full hover:shadow-xl">Thêm vào giỏ hàng</button>
+                    
+                    <Link to={'/update'} ><button className="rounded border p-2 mt-4 border-blue-500 bg-blue-500 text-white w-full hover:shadow-xl">Cập nhật sản phẩm</button></Link>
                 </div>
             </div>
             <div>
