@@ -1,10 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import NavigationOrderTab from '../components/NavigationOrderTab';
 import DetailedOrder from './DetailedOrder';
 import { Link } from "react-router-dom";
+import axios from "axios";
 const MyOrders = () => {
     const [selectedTitle, setSelectedTitle] = useState('Tất cả đơn'); // Initial selected title
-
+    const maNguoiMua='123456';
     const titles = [
         'Tất cả đơn',
         'Chờ thanh toán',
@@ -16,26 +17,26 @@ const MyOrders = () => {
     const handleTitleClick = (title) => {
         setSelectedTitle(title);
     };
-    const orders = [
-        {
-            id: 1,
-            status: 'Giao hàng thành công',
-            quantity: 2,
-            product: 'Tai Nghe Winlink W300 (Samsung, Oppo, Vivo, Vsmart) - Jack 3.5MM - hàng chính hãng',
-            seller: 'PKĐT Thuận Phát',
-            price: '50.000 ₫',
-            total: '122.000 ₫',
-        },
-        {
-            id: 2,
-            status: 'Giao hàng thành công',
-            quantity: 1,
-            product: 'Tai Nghe Winlink W300 (Samsung, Oppo, Vivo, Vsmart) - Jack 3.5MM - hàng chính hãng',
-            seller: 'PKĐT Thuận Phát',
-            price: '50.000 ₫',
-            total: '122.000 ₫',
-        },
-    ];
+    const [myOrders,setMyOrders]=useState(null);
+    async function fetchOrders() {
+        try {
+            const response = await axios.get(`http://localhost:3000/order/all`, {
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+            if (response.status >= 200 && response.status < 400) {
+                const filteredOrders = response.data.result.filter(order => order.MaNguoiMua === maNguoiMua);
+                // console.log(filteredOrders);
+                setMyOrders(filteredOrders);
+            }
+        } catch (error) {
+            console.log('API Error:', error);
+        }
+    }
+    useEffect(()=>{
+        fetchOrders();
+    },[])
   return (
     <div className='flex justify-center w-full bg-[#f5f4fb] text-slate-600'>
         <div className='w-[1200px]'>
@@ -92,42 +93,40 @@ const MyOrders = () => {
                         </form>
                     </div>
                     <div class='my-orders-history' className='flex flex-col space-y-4 '>
-                        {orders.map((order) => (
-                            <div key={order.id} className='order-card rounded-md flex flex-col bg-white'>
+                        {myOrders?(myOrders.map((order) => (
+                            <div key={order.MaDonHang} className='order-card rounded-md flex flex-col bg-white'>
                                 <div className='flex flex-row items-center space-x-4 p-4 '>         
                                     <img className='w-6' src="https://icon-library.com/images/fast-delivery-icon/fast-delivery-icon-6.jpg" alt="avatar"/>
                                     <div>
-                                        {order.status}
+                                        {order.TinhTrangDonHang}
                                     </div>
                                 </div>
                                 <div className='relative flex flex-row items-center space-x-4 border-t border-b mx-4 py-5'>         
-                                    <img className='w-16 relative' src="https://salt.tikicdn.com/cache/750x750/ts/product/98/31/6f/8a38e59250bd55ad01b0b0f5ee53da3e.jpg.webp" alt="avatar"/>
-                                    <div className='absolute left-7 top-16 p-1 bg-slate-100 rounded-md'>
-                                        {`x${order.quantity}`}
-                                    </div>
+                                <img className='w-16 relative' src="https://salt.tikicdn.com/cache/200x200/ts/product/d2/76/c1/5a9bf18968aeb1f43add175f3908b961.jpg" alt="avatar"/>                            
                                     <div className='flex flex-col items-top h-full'>
                                         <div>{order.product}</div>
-                                        <div className='text-xs flex flex-row items-center space-x-2'>
-                                            <img className='w-6 relative' src="https://www.svgrepo.com/show/520983/store-2.svg" alt="avatar"/>
+                                        <div className='text-sm flex flex-row items-center space-x-2'>
+                                            <div>Mã đơn hàng: </div>
                                             <div>
-                                                {order.seller}
+                                                {order.MaDonHang}
                                             </div>
                                             
                                         </div>
+                                        <div className='items-top h-full'>
+                                        Thời gian: {order.ThoiGian}
+                                        </div>
                                     </div>
-                                    <div className='items-top h-full'>
-                                        {order.price}
-                                    </div>
+                                    
                                 </div>
                                 <div className='flex justify-end w-full  p-4'>
                                     <div className='flex flex-col justify-right space-y-2'>
                                        <div className='flex justify-end items-center'>
-                                        <p className='text-lg'>Tổng tiền</p>
-                                        {`: ${order.total}`}
+                                        <p className='text-lg'>Phương thức vận chuyển</p>
+                                        {`: ${order.PhuongThucVanChuyen}`}
                                         </div>
                                         <div className='flex justify-end space-x-2'>
                                             <button className='border p-2 rounded-md border-sky-600 text-sky-600'>Mua lại</button>
-                                            <Link key={order.id} order={order} to={`/orders/${order.id}`} 
+                                            <Link key={order.MaDonHang} order={order} to={`/orders/${order.MaDonHang}`} 
                                             className='border p-2 rounded-md border-sky-600 text-sky-600'
                                             >
                                                 Xem chi tiết
@@ -136,7 +135,7 @@ const MyOrders = () => {
                                     </div>
                                 </div> 
                             </div>
-                        ))}
+                        ))):(<div>No order was found</div>)}
                     </div>
                 </div>
             </div>
