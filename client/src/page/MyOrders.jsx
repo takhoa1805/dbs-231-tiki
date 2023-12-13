@@ -37,7 +37,7 @@ const MyOrders = () => {
         },
     ];
   return (
-    <div className='flex justify-center w-full bg-[#f5f4fb]'>
+    <div className='flex justify-center w-full bg-[#f5f4fb] text-slate-600'>
         <div className='w-[1200px]'>
             <div class="breadcrumb flex flex-row align-center my-auto px-auto items-center space-x-2">
                 <a class="breadcrumb-item" data-view-id="breadcrumb_item" data-view-index="0" href="/" previewlistener="true">

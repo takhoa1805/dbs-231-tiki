@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios"
 import sale1 from "../../assets/Sale1.png";
 import sale2 from "../../assets/sale2.png";
 import sale3 from "../../assets/sale3.png";
@@ -13,21 +14,50 @@ import img from "../../assets/product.png";
 import { FaStar } from 'react-icons/fa';
 import dummyData from "./dummydata";
 export default function ProductList()
-{    function renderStars(rating) {
-    const stars = [];
-    const totalStars = 5; 
-    const roundedRating = Math.round(rating); 
-    
-    for (let i = 1; i <= totalStars; i++) {
-        if (i <= roundedRating) {
-          stars.push(<FaStar key={i} className="text-yellow-500" />);
-        } else {
-          stars.push(<FaStar key={i} className="text-gray-500" />);
+{   function renderStars(rating) {
+        const stars = [];
+        const totalStars = 5; 
+        const roundedRating = Math.round(rating); 
+        
+        for (let i = 1; i <= totalStars; i++) {
+            if (i <= roundedRating) {
+            stars.push(<FaStar key={i} className="text-yellow-500" />);
+            } else {
+            stars.push(<FaStar key={i} className="text-gray-500" />);
+            }
         }
-      }
-    
-    return stars;
+        
+        return stars;
     }      
+
+    const [productList,setProductList] = useState([]);
+    async function fetchData(){
+        try {
+          await axios.get("http://localhost:3000/product/all", {
+            headers: {
+                "Content-Type": "application/json",
+            }
+          })
+          .then(response => {
+            console.log(response);
+            if (response.status >=200 && response.status<400){
+                setProductList(response.data.result);
+            }
+          })
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+
+    useEffect(()=>{
+        fetchData();
+
+    },[])
+
+
+
+
     return(
         <div className="p-20">
             <div className="flex justify-end pb-10">
@@ -56,24 +86,24 @@ export default function ProductList()
             </div>
             <div><p className="font-bold text-lg text-black mr-10 ml-10 mt-10">Gợi ý hôm nay</p>
                 <div className="grid grid-cols-4 gap-8 p-10 mr-10 ml-10">
-                    {dummyData.map((product, index) => (
-                    <Link key={index} to={`/products/${index}`} className="max-w-sm rounded overflow-hidden shadow-lg">
+                    {productList.map((product, index) => (
+                    <Link key={index} to={`/products/${product.MaSP}`} className="max-w-sm rounded overflow-hidden shadow-lg">
                         <img
                             className="w-full"
                             src={img}
-                            alt={product.name}
+                            alt={product.TenSP}
                         />
                         <div className="px-6 py-4">
-                            <div className="mb-2">{product.name}</div>
+                            <div className="mb-2">{product.TenSP}</div>
                             <div className="flex flex-row mt-4 mb-4">
-                            {renderStars(3)}
+                            {renderStars(product.SoSaoTrungBinh)}
                             <p className="text-gray-500 ml-4 ">   | Đã bán 4.4k</p>
                             </div>
                             <p className="font-bold text-gray-700 text-base">
                             {new Intl.NumberFormat("vi-VN", {
                                 style: "currency",
                                 currency: "VND",
-                            }).format(product.price)}
+                            }).format(product.GiaTien)}
                             </p>
                             <p style={{borderTop:"1px solid gray",marginTop:"20px",paddingTop:"5px"}}>Giao thứ 7, 09/12</p>
                         </div>

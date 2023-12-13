@@ -1,48 +1,108 @@
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams } from "react-router-dom";
 import QuantityPicker from '../components/quantity'
 export default function UpdateProduct(){
+  const [quantity, setQuantity] = useState(1);
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
+  const { id } = useParams(); 
+  const handleChangeQuantity = (value) => {
+    setQuantity(value);
+  };
+  const [productDetail,setProductDetail] = useState(null);
+
+  const handleChangeDescription = (e) => {
+    setDescription(e.target.value);
+  };
+
+  const handleChangePrice = (e) => {
+    setPrice(e.target.value);
+  };
+  async function fetchData() {
+    try {
+      const response = await axios.get(`http://localhost:3000/product/findbyid/${id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.status >= 200 && response.status < 400) {
+        setProductDetail(response.data.result);
+      }
+    } catch (error) {
+      console.log('API Error:', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [id]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Add logic to handle form submission with the collected state values
+    // For example, you can send a request to the server with the form data
+    console.log({
+      id,
+      price,
+      quantity,
+      description,
+    });
+    try {
+      await axios.post(`http://localhost:3000/product/update`,{
+        _id: id,
+        price: price,
+        description: description,
+        quantity: quantity,
+        
+      }, 
+      {
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
+      .then(response => {
+
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   return (
-    <form className='p-10 m-10'>
+    <form className='p-10 m-10 ' onSubmit={handleSubmit}>
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold leading-7 text-gray-900">Tạo sản phẩm</h2>
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-4">
               <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
-                Tên sản phẩm: abc
+              Tên sản phẩm: {productDetail ? productDetail.TenSP : ''}
               </label>
             </div>
             <div className="sm:col-span-2 sm:col-start-1">
               <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
-                Thuộc tính: abc
+                Loại sản phẩm: {productDetail ?  productDetail.LoaiSP : ''}
               </label>
             </div>
            
             <div className="sm:col-span-2 ">
               <label htmlFor="region" className="block text-sm font-medium leading-6 text-gray-900">
-                Thương hiệu : abc
+                Mã Thương hiệu : {productDetail ? productDetail.MaThuongHieu:''}
               </label>
             </div>
 
             <div className="sm:col-span-2">
               <label htmlFor="postal-code" className="block text-sm font-medium leading-6 text-gray-900">
-                Type: abc
+                Xuất xứ: {productDetail ?productDetail.XuatXu:''}
               </label>
             </div>
             <div className="sm:col-span-2 sm:col-start-1 ">
               <label htmlFor="city" className="block text-sm font-medium leading-6 text-gray-900">
                 Số lượng 
               </label>
-              
               <div className="mt-2">
-                {/* <input
-                  type="text"
-                  name="quantity"
-                  id="quantity"
-                  autoComplete="address-level2"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                /> */}
-                <QuantityPicker></QuantityPicker>
+                <QuantityPicker value={quantity} onChange={handleChangeQuantity} />
               </div>
             </div>
             <div className="sm:col-span-2">
@@ -54,7 +114,8 @@ export default function UpdateProduct(){
                   type="text"
                   name="price"
                   id="price"
-                  
+                  value={price}
+                  onChange={handleChangePrice}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -68,8 +129,9 @@ export default function UpdateProduct(){
                   id="description"
                   name="description"
                   rows={3}
+                  value={description}
+                  onChange={handleChangeDescription}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  defaultValue={''}
                 />
               </div>
             </div>

@@ -37,6 +37,7 @@ class ProductController{
 
 
         }catch(err){
+            console.log(err)
             throw err;
         }
     }
@@ -46,6 +47,20 @@ class ProductController{
             let pool = await sql.connect(config);
 
             let products = await pool.request().query(`SELECT * FROM SanPham WHERE TenSP LIKE '%${product_name}%'`);
+            
+            return {result:products.recordset};
+
+
+        }   catch(err){
+            throw err;
+        }
+    }
+
+    async getBrand(){
+        try{
+            let pool = await sql.connect(config);
+
+            let products = await pool.request().query(`SELECT * FROM ThuongHieu`);
             
             return {result:products.recordset};
 

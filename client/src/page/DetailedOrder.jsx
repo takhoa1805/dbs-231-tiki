@@ -106,7 +106,7 @@ const DetailedOrder = () => {
     return number.toLocaleString('en-US',{ minimumFractionDigits: 3 });
   }
   return (
-    <div className='flex justify-center w-full bg-[#f5f4fb]'>
+    <div className='flex justify-center w-full bg-[#f5f4fb] text-slate-600'>
         <div className='w-[1200px]'>
             <div class="breadcrumb flex flex-row align-center my-auto px-auto items-center space-x-2">
                 <a class="breadcrumb-item" data-view-id="breadcrumb_item" data-view-index="0" href="/" previewlistener="true">
@@ -129,13 +129,13 @@ const DetailedOrder = () => {
             <div className='flex flex-row space-x-4 justify-between'>
                 <NavigationOrderTab/>
                 <div class='my-orders' className='flex flex-col space-y-4 w-full'>
-                    <span className='text-xl mt-10'>Chi tiết đơn hàng #{donHang.MaDonHang} - {donHang.TinhTrangDonHang}</span>
+                    <span className='text-xl mt-10 flex flex-row'>Chi tiết đơn hàng #{donHang.MaDonHang} - <p className='ml-1 text-black text-xl'>{donHang.TinhTrangDonHang}</p></span>
                     <div className='flex flex-row w-full justify-between space-x-0 bg-white'>
                     </div>      
                     <div className='flex flex-row space-x-4 '> 
                       <div className="basis-1/3 flex flex-col space-y-4 h-full">
-                        <div>ĐỊA CHỈ NGƯỜI NHẬN
-</div>
+                        <div>ĐỊA CHỈ NGƯỜI NHẬN   
+                        </div>
                         <div className='bg-white p-4 rounded-md h-full'>
                           <span className='font-bold'>HOÀNG MINH HIỂN</span> <br />
                           Địa chỉ: 30 Trần Quốc Tuấn, Phường Tứ Hạ, Thị xã Hương Trà, Thừa Thiên Huế, Việt Nam <br />
