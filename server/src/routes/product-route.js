@@ -3,6 +3,8 @@ const router = express.Router();
 
 const ProductController = require('../app/controllers/ProductController');
 
+let id = 10000100;
+
 router.get('/',async(req,res,next)=>{
     try{
         return res.status(200).json({
@@ -38,9 +40,24 @@ router.get('/findbyid/:id',async(req,res,next)=>{
     }
 })
 
+
+router.get('/brand', async(req,res,next)=>{
+    try{
+        const data = await ProductController.getBrand();
+        console.log(data)
+        if (data.error) {
+            return res.status(400).json(data);
+          } else return res.status(200).json(data);
+
+    }   catch(err){
+        next(err);
+    }
+})
+
 router.post('/create',async(req,res,next)=>{
     try{
-        const {_id,price,description,name,origin,quantity,type,brand_id,relative_list,sample_product,seller_id}=req.body;
+        const {price,description,name,origin,quantity,type,brand_id,relative_list,sample_product,seller_id}=req.body;
+        const _id = id++;
         const data = await ProductController.createproduct( {_id,price,description,name,origin,quantity,type,brand_id,relative_list,sample_product,seller_id});
 
         if (data.error) {
@@ -63,7 +80,7 @@ router.get('/name/:product_name',async(req,res,next)=>{
     }
 })
 
-router.patch('/update/',async (req,res,next)=>{
+router.post('/update',async (req,res,next)=>{
     try{
         const {_id,price,description,quantity}=req.body;
         const data = await ProductController.updateproduct( {_id,price,description,quantity});

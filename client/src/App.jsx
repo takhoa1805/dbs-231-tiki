@@ -18,12 +18,12 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<ProductList />} />
-          <Route path="products/*" element={<ProductList />} />
+          <Route path="products" element={<ProductList />} />
           <Route path="products/:id" element={<ProductDetail />} />
           <Route path="analytics" element={<AnalyticsPage />} />
           <Route path="orders" element={<MyOrders />} />
           <Route path="create" element={<Create />} />
-          <Route path="update" element={<UpdateProduct />} />
+          <Route path="update/:id" element={<UpdateProduct />} />
           <Route path="orders/:id" element={<DetailedOrder />} />
         </Routes>
         <Footer />

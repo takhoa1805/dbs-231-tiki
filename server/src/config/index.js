@@ -14,17 +14,6 @@ const config = {
     }
 }
 
-// const connection = async()=>{
-//     try{
-//         const promise = await sql.connect(config);
-//         const result = await sql.query('SELECT * FROM SanPham');
-//         console.log(result);
-//     }   catch(err){
-//         console.log(err);
-//     }
-// }
-
-// connection();
 
 module.exports = config;
 
