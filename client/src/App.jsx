@@ -11,6 +11,8 @@ import MyOrders from './page/MyOrders';
 import Create from './page/createproduct';
 import UpdateProduct from './page/updateproduct';
 import DetailedOrder from './page/DetailedOrder';
+import InfoPage from './page/InfoPage';
+import SellCenter from './page/SellCenter';
 function App() {
   return (
     <ContextProvider>
@@ -25,6 +27,8 @@ function App() {
           <Route path="create" element={<Create />} />
           <Route path="update/:id" element={<UpdateProduct />} />
           <Route path="orders/:id" element={<DetailedOrder />} />
+          <Route path="info" element={<InfoPage />} />
+          <Route path="sellcenter" element={<SellCenter />} />
         </Routes>
         <Footer />
       </BrowserRouter>

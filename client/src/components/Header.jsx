@@ -53,7 +53,7 @@ const Header = () => {
                     <div className="absolute w-60 top-10 right-0 mt-2 bg-white border rounded-lg shadow-md z-10 flex flex-col">
                         <ul className="py-1">
                         <li>
-                            <button className="block text-left w-full px-4 py-2 text-gray-800 hover:bg-gray-200">Thông tin tài khoản</button>
+                            <Link to="/info" className="block text-left w-full px-4 py-2 text-gray-800 hover:bg-gray-200">Thông tin tài khoản</Link>
                         </li>
                         <li onClick={() => setShowDropdown(false)}>
                             <Link to="/orders" className="block px-4 py-2 text-left w-full text-gray-800 hover:bg-gray-200 focus:outline-none">Đơn hàng của tôi</Link>
@@ -72,7 +72,7 @@ const Header = () => {
                 <div className='my-2 mx-4 border-r'></div>
                 <button className="p-2 flex flex-row space-x-2 rounded-lg hover:bg-slate-100 relative">
                     <img className='w-6' src="https://salt.tikicdn.com/ts/upload/51/e2/92/8ca7e2cc5ede8c09e34d1beb50267f4f.png" alt="header_header_img_Cart"/>
-                    <div className='absolute right-0 bottom-6 text-white bg-red-500 rounded-full text-sm px-0.5'>
+                    <div className='absolute right-0 bottom-6 text-white bg-red-500 rounded-full text-sm px-1'>
                         {numProduct}
                     </div>
                 </button>
