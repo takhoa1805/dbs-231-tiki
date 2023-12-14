@@ -72,7 +72,7 @@ export default function Create() {
         seller_id: "112233",
         _id: "1234567",
         name: productName,
-        price: price,
+        price: `${price}.00`,
         description: description,
         origin: origin,
         type: type,

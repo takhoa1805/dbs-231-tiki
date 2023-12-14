@@ -67,8 +67,8 @@ export default function Detail() {
 
     async function fetchComment(sortType){
         try {
-            const url = `localhost:3000/product/rating/${sortType}/${id}`;
-            console.log(url)
+            // const url = `localhost:3000/product/rating/${sortType}/${id}`;
+            // console.log(url)
             await axios.get(`http://localhost:3000/product/rating/${sortType}/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
@@ -87,7 +87,7 @@ export default function Detail() {
 
     useEffect(()=>{
         fetchData();
-        fetchComment('date/descending')
+        fetchComment('date/descending');
     },[id])
     
     async function handleAddToCart(){
@@ -108,6 +108,22 @@ export default function Detail() {
 
         }
     }
+    async function handleDelete() {
+        try {
+            const response = await axios.post(`http://localhost:3000/product/delete/${id}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+    
+            if (response.status >= 200 && response.status < 400) {
+                console.log(response.data.result);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
     
     return (
         <div>
@@ -141,8 +157,8 @@ export default function Detail() {
                                 <p className="font-medium text-xl text-black">Khách hàng đánh giá</p>
                                 <p className="font-medium text-xl text-black">Lọc theo</p>
                                 <div className="flex flex-row pb-4 border-b border-gray-300">
-                                    <button className="border border-gray-500 rounded-2xl text-gray-500  p-1 m-2" onClick={()=>fetchComment('date/descending')}>Mới nhất</button>
-                                    <button className="border border-gray-500 rounded-2xl text-gray-500  p-1 m-2" onClick={()=>fetchComment('date/ascending')}>Cũ nhất</button>
+                                    <button className="border border-gray-500 rounded-2xl text-gray-500  p-1 m-2" onClick={()=>fetchComment('date/descending')}> Mới nhất</button>
+                                    <button className="border border-gray-500 rounded-2xl text-gray-500  p-1 m-2" onClick={()=>fetchComment('date/ascending')}> Cũ nhất</button>
                                     <button className="border border-gray-500 rounded-2xl text-gray-500  p-1 m-2" onClick={()=>fetchComment('rates/descending')}>Đánh giá cao</button>
                                     <button className="border border-gray-500 rounded-2xl text-gray-500  p-1 m-2" onClick={()=>fetchComment('rates/ascending')}>Đánh giá thấp</button>
                                 </div>
@@ -207,6 +223,7 @@ export default function Detail() {
                             <button className="rounded border p-2 mt-4 border-blue-500 text-blue-500 w-full hover:shadow-xl" onClick={handleAddToCart}>Thêm vào giỏ hàng</button>
                             
                             <Link to={`/update/${id}`} ><button className="rounded border p-2 mt-4 border-blue-500 bg-blue-500 text-white w-full hover:shadow-xl">Cập nhật sản phẩm</button></Link>
+                            <button className="rounded border p-2 mt-4 border-red-500 text-red-500 w-full hover:shadow-xl" onClick={handleDelete}>Xóa sản phẩm</button>
                         </div>
                     </div>
                     <div>
