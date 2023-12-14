@@ -5,7 +5,6 @@ import { Context } from '../context/context.jsx';
 
 const Header = () => {
     const {numProduct}=useContext(Context);
-    console.log(numProduct);
   const [showDropdown, setShowDropdown] = useState(false);
   return (
     <div className='w-full flex flex-row py-2 justify-center space-x-12'>
