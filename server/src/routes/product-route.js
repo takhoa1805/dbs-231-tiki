@@ -3,7 +3,7 @@ const router = express.Router();
 
 const ProductController = require('../app/controllers/ProductController');
 
-let id = 10000100;
+let id = 10002100;
 
 router.get('/',async(req,res,next)=>{
     try{
@@ -94,7 +94,7 @@ router.post('/update',async (req,res,next)=>{
     }
 })
 
-router.delete('/delete/:id',async(req,res,next)=>{
+router.post('/delete/:id',async(req,res,next)=>{
     try{
         const data = await ProductController.deleteproduct(req.params.id);
         if (data.error){
@@ -140,7 +140,7 @@ router.get('/rating/rates/ascending/:product_id',async(req,res,next)=>{
 
 router.get('/rating/rates/descending/:product_id',async(req,res,next)=>{
     try{
-        const data = await ProductController.getrating(req.params.product_id,'ratin_desc');
+        const data = await ProductController.getrating(req.params.product_id,'rating_desc');
         if (data.error){
             return res.status(400).json(data);
         }   else return res.status(200).json(data);

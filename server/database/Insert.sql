@@ -176,6 +176,7 @@ INSERT INTO KhuyenMai VALUES  ('VanChuyen3', 40000, null, 15000, 150000, 63, 28,
 INSERT INTO KhuyenMai VALUES  ('VoucherShop1', 50000, 10, 5000, 10000, 50, 36, CONVERT(datetime,'16-11-2023', 105), CONVERT(datetime,'02-12-2023', 105), 'ShopVoucher');
 INSERT INTO KhuyenMai VALUES  ('VoucherShop2', 20000, null, 7000, 15000, 70, 22, CONVERT(datetime,'17-10-2023', 105), CONVERT(datetime,'26-11-2023', 105), 'ShopVoucher');
 INSERT INTO KhuyenMai VALUES  ('VoucherShop3', 2000, 20, 12000, 20000, 102, 17, CONVERT(datetime,'11-11-2023', 105), CONVERT(datetime,'30-11-2023', 105), 'ShopVoucher');
+INSERT INTO KhuyenMai VALUES  ('VoucherShop4', 50000, 10, 5000, 10000, 50, 36, CONVERT(datetime,'16-11-2023', 105), CONVERT(datetime,'02-12-2023', 105), 'ShopVoucher');
 
 INSERT INTO Coupon VALUES ('TIKI1');
 INSERT INTO Coupon VALUES ('TIKI2');
@@ -187,6 +188,7 @@ INSERT INTO VoucherVanChuyen VALUES  ('VanChuyen3', 'Hoả tốc');
 INSERT INTO ShopVoucher VALUES ('VoucherShop1', '112233');
 INSERT INTO ShopVoucher VALUES ('VoucherShop2', '332211');
 INSERT INTO ShopVoucher VALUES ('VoucherShop3', '333333');
+INSERT INTO ShopVoucher VALUES ('VoucherShop4', '112233');
 
 INSERT INTO DonHang VALUES (1, N'Nhanh', CONVERT(datetime,'13-11-2023', 105), N'COD', N'Thành công', N'Đã giao hàng', 25000.00, N'KTX Khu B, Dĩ An, Bình Dương', '123456', null, null, null);
 INSERT INTO DonHang VALUES (2, N'Tiết kiệm', CONVERT(datetime,'14-11-2023', 105), N'Momo', N'Thành công', N'Đã giao hàng', 22000.00, N'Đại học Bách Khoa, Dĩ An, Bình Dương', '654321', null, null, null);
@@ -202,6 +204,7 @@ INSERT INTO DonHang VALUES (11, N'Nhanh', CONVERT(datetime,'22-11-2023', 105), N
 INSERT INTO DonHang VALUES (12, N'Tiết kiệm', CONVERT(datetime,'22-11-2023', 105), N'Zalopay', N'Thành công', N'Đã giao hàng', 0.0, N'Đại học Bách Khoa, Quận 10, TP.HCM', '111111', null, null, null);
 INSERT INTO DonHang VALUES (13, N'Nhanh', CONVERT(datetime,'23-11-2023', 105), N'Zalopay', N'Thành công', N'Đã giao hàng', 12000.00, N'KTX Khu B, Dĩ An, Bình Dương', '222222', null, null, null);
 INSERT INTO DonHang VALUES (14, N'Hoả tốc', CONVERT(datetime,'23-11-2023', 105), N'Zalopay', N'Đã huỷ', N'Đã huỷ', 35000.00, N'KTX Khu B, Dĩ An, Bình Dương', '222222', null, null, null);
+INSERT INTO DonHang VALUES (15, N'Hoả tốc', CONVERT(datetime,'23-11-2023', 105), N'Zalopay', N'Thành công', N'Đã giao hàng', 35000.00, N'KTX Khu B, Dĩ An, Bình Dương', '222222', null, null, null);
 
 INSERT INTO DanhSachSPThuocDonHang VALUES ('10000003', 1, 1, null);
 INSERT INTO DanhSachSPThuocDonHang VALUES ('10000004', 1, 1, null);
