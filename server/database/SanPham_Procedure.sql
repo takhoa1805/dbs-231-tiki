@@ -128,7 +128,7 @@ END;
 
 ---trigger when call insert procedure to SanPham table
 
-
+/*
 CREATE TRIGGER tr_InsertIntoDienTuDienLanh
 ON SanPham
 AFTER INSERT
@@ -222,3 +222,4 @@ EXEC Update_SanPham '10000022', 250000.00, N'Updated product description', 60;
 EXEC Delete_SanPham '10000022';
 
 
+*/

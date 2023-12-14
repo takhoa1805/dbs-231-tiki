@@ -2,7 +2,7 @@ const sql = require('mssql');
 const config = {
     user:'khoa', //update me
     password:'6319', //update me
-    database:'tiki', //update me
+    database:'tikitiki', //update me
     server: 'KHOALAPTOP\\SQLEXPRESS',  //update me
     pool:{
         max:10,

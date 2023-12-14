@@ -3,7 +3,7 @@ const router = express.Router();
 
 const ProductController = require('../app/controllers/ProductController');
 
-let id = 10000100;
+let id = 10001100;
 
 router.get('/',async(req,res,next)=>{
     try{

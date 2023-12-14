@@ -7,22 +7,16 @@ import { Link } from 'react-router-dom';
 const SellCenter = () => {
     const title = "Sell Center";
     const seller_id = "332211";
-    const [totalOrders,setTotalOrders]=useState(null);
-    const fromDate = new Date("2023-11-13");
-const toDate = new Date("2023-11-23");
-const fromdate = new Date(fromDate + 'T00:00:00Z');
-const todate = new Date(toDate + 'T00:00:00');
-const fromDateString = fromDate.toISOString();
-const toDateString = toDate.toISOString();
+    const [totalOrders,setTotalOrders]=useState();
 
     async function fetchTotalOrders() {
         try {
-            const response = await axios.get(`http://localhost:3000/statistics/total-order/status`, 
-            {params:{
-                seller_id:332211,
-                from: fromDate,
-                to: toDate, 
-            }},{
+            const response = await axios.post(`http://localhost:3000/statistics/total-order/status`, 
+            {
+                seller_id:"332211",
+                from: "2023-11-13",
+                to: "2023-11-23", 
+            },{
                 headers: {
                     "Content-Type": "application/json",
                 }
@@ -38,19 +32,40 @@ const toDateString = toDate.toISOString();
     const [revenue,setRevenue]=useState(null)
     async function fetchRevenue() {
         try {
-            const response = await axios.get(`http://localhost:3000/order/all`, 
-            { params:{
-                "seller_id": seller_id,
-                from: fromdate,
-                to: todate, 
-            }},{
+            const response = await axios.post(`http://localhost:3000/statistics/revenue`, 
+            { 
+                seller_id: "332211",
+                from: "2023-11-13",
+                to: "2023-11-23", 
+            },{
                 headers: {
                     "Content-Type": "application/json",
                 }
             });
             if (response.status >= 200 && response.status < 400) {
-                console(response.data.result)
+                console.log(response.data.result)
                 setRevenue(response.data.result);
+            }
+        } catch (error) {
+            console.log('API Error:', error.data.result);
+        }
+    }
+    const [cancelRate,setCancelRate]=useState(null)
+    async function fetchCancelRate() {
+        try {
+            const response = await axios.post(`http://localhost:3000/statistics/cancel-rate`, 
+            { 
+                seller_id: "332211",
+                from: "2023-11-13",
+                to: "2023-11-23", 
+            },{
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+            if (response.status >= 200 && response.status < 400) {
+                console.log(response.data.result)
+                setCancelRate(response.data.result);
             }
         } catch (error) {
             console.log('API Error:', error.data.result);
@@ -59,10 +74,12 @@ const toDateString = toDate.toISOString();
     useEffect(()=>{
         fetchTotalOrders();
         fetchRevenue();
+        fetchCancelRate();
     },[])
+
     return (
         <div className='flex justify-center w-full bg-[#f5f4fb] text-slate-600'>
-            {totalOrders?(
+            {totalOrders&&cancelRate&&revenue?(
             <div className='w-[1200px]'>
                 <BreadCrumb title={title}/>
                 <div className='flex flex-row space-x-4 justify-between'>
@@ -71,11 +88,11 @@ const toDateString = toDate.toISOString();
                     <span className='text-xl mt-10 flex flex-row'>Sell Center</span>
                         <div className='flex flex-col bg-white space-y-4 p-4'>
                             <div>Mã người bán: {seller_id}</div>
-                            <div>Tổng số đơn: {totalOrders}</div>
-                            <div>Số đơn đã bán thành công:</div>
-                            <div>Số đơn đã bị hủy:</div>
-                            <div>Tỉ lệ hủy đơn:</div>
-                            <div>Tổng doanh thu:</div>
+                            <div>Tổng số đơn: {totalOrders.TotalOrder}</div>
+                            <div>Số đơn đã bán thành công: {totalOrders.SuccessfulOrder}</div>
+                            <div>Số đơn đã bị hủy: {totalOrders.CancelOrder}</div>
+                            <div>Tỉ lệ hủy đơn: {cancelRate.CancelRate} %</div>
+                            <div>Tổng doanh thu: {revenue.Revenue} ₫</div>
                         </div>
                         
                       </div>

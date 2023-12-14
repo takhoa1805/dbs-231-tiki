@@ -16,35 +16,15 @@ const DetailedOrder = () => {
                 }
             });
             if (response.status >= 200 && response.status < 400) {
-                console.log(response.data.result);
                 setOrders(response.data.result);
             }
         } catch (error) {
             console.log('API Error:', error);
         }
     }
-    const [price, setPrice] = useState([]);
-
-    async function getGiaTien(MaSP) {
-      try {
-        const response = await axios.get(`http://localhost:3000/product/findbyid/${MaSP}`, {
-          headers: {
-            "Content-Type": "application/json",
-          }
-        });
-        if (response.status >= 200 && response.status < 400) {
-          setPrice([...price, response.data.result.GiaTien]); // Pushing data into the price array
-        }
-      } catch (error) {
-        console.log('API Error:', error);
-      }
-    }
-
     useEffect(()=>{
         fetchOrders();
-        setPrice();
-    },[setPrice])
-    orders?console.log(price):(console.log(123))
+    },[])
   return (
     <div className='flex justify-center w-full bg-[#f5f4fb] text-slate-600'>
         <div className='w-[1200px]'>
@@ -137,12 +117,7 @@ const DetailedOrder = () => {
                                     </div>
                                     
                                     <div className='items-top h-full basis-2/12'>
-                                    {/* {async () => {
-                                      const price = await getGiaTien(product.MaSP);
-                                      return `${price} ₫`;
-                                    }} */}
-                                    {()=>getGiaTien(product.MaSP)}
-                                    {price?price[index]:0}
+                                    {product.GiaTien}
                                     ₫
                                     </div>
                                     <div className='items-top h-full basis-2/12'>

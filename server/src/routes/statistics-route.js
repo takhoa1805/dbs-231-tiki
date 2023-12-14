@@ -14,7 +14,7 @@ router.get('/',async(req,res,next)=>{
     }
 })
 
-router.get('/cancel-rate',async(req,res,next)=>{
+router.post('/cancel-rate',async(req,res,next)=>{
     try{
         const {seller_id,from,to}=req.body;
         const data = await StatisticsController.cancelrate({seller_id,from,to});
@@ -27,7 +27,7 @@ router.get('/cancel-rate',async(req,res,next)=>{
     }
 })
 
-router.get('/total-order',async(req,res,next)=>{
+router.post('/total-order',async(req,res,next)=>{
     try{
         const {seller_id,from,to}=req.body;
         const data = await StatisticsController.totalorder({seller_id,from,to});
@@ -40,7 +40,7 @@ router.get('/total-order',async(req,res,next)=>{
     }
 })
 
-router.get('/total-canceled',async(req,res,next)=>{
+router.post('/total-canceled',async(req,res,next)=>{
     try{
         const {seller_id,from,to}=req.body;
         const data = await StatisticsController.totalcanceled({seller_id,from,to});
@@ -53,7 +53,7 @@ router.get('/total-canceled',async(req,res,next)=>{
     }
 })
 
-router.get('/revenue',async(req,res,next)=>{
+router.post('/revenue',async(req,res,next)=>{
     try{
         const {seller_id,from,to}=req.body;
         const data = await StatisticsController.revenue({seller_id,from,to});
@@ -66,7 +66,7 @@ router.get('/revenue',async(req,res,next)=>{
     }
 })
 
-router.get('/total-order/status',async(req,res,next)=>{
+router.post('/total-order/status',async(req,res,next)=>{
     try{
         const {seller_id,from,to}=req.body;
         const data = await StatisticsController.totalorderstatus({seller_id,from,to});

@@ -150,7 +150,7 @@ RETURN
 /*SELECT * FROM dbo.total_order_status('2023-11-13', '2023-11-23', '333333');
 DROP FUNCTION IF EXISTS dbo.total_order_status;*/
 
-/*
+
 ------------------TỔNG SỐ ĐƠN HỦY--------------------
 CREATE FUNCTION total_canceled_order
 (
@@ -183,5 +183,5 @@ SELECT dbo.total_canceled_order('2023-11-13', '2023-11-23', '332211') AS TotalCa
 DROP FUNCTION IF EXISTS dbo.total_canceled_order;
 SELECT * FROM DonHang;
 SELECT * FROM SanPham;
-SELECT * FROM DanhSachSPThuocDonHang order by MaDonHang;*/
+SELECT * FROM DanhSachSPThuocDonHang order by MaDonHang;
 

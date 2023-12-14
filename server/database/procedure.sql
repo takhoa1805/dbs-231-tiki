@@ -1,4 +1,5 @@
 -- lấy danh sách đánh giá
+GO
 CREATE PROCEDURE GetRating(@ID INT, @sortBy VARCHAR(50))
 AS
 BEGIN
@@ -35,6 +36,7 @@ BEGIN
 END;
 -- kiểm tra thủ tục: EXEC GetRating @ID = 10000003, @sortBy = 'date_asc';
 -- lấy thông tin của đơn hàng
+GO
 CREATE PROCEDURE GetOrderDetails
     @MaDonHang INT
 AS
